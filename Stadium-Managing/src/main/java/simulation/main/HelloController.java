@@ -1,4 +1,4 @@
-package simulation.stadiummanaging;
+package simulation.main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

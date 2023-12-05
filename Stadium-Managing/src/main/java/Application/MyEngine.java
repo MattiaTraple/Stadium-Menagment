@@ -1,5 +1,6 @@
 package Application;
 
+import eduni.distributions.ContinuousGenerator;
 import eduni.distributions.Negexp;
 import eduni.distributions.Normal;
 
@@ -16,9 +17,9 @@ public class MyEngine extends Engine {
    public MyEngine() {
         super();
         servicePoint = new ServicePoint[2];     // just an array of one element
-        servicePoint[0] = new ServicePoint("S1", new Normal(10, 6), eventList, EventType.DEP1);
-        servicePoint[1] = new ServicePoint("S2", new Normal(10, 10), eventList, EventType.DEP2);
-        arrivalProcess = new ArrivalProcess(new Negexp(15), eventList, EventType.ARR);
+        servicePoint[0] = new ServicePoint("S1", (ContinuousGenerator) new Normal(10, 6), eventList, EventType.DEP1);
+        servicePoint[1] = new ServicePoint("S2", (ContinuousGenerator) new Normal(10, 10), eventList, EventType.DEP2);
+        arrivalProcess = new ArrivalProcess((ContinuousGenerator) new Negexp(15), eventList, EventType.ARR);
     }
 
     protected void initialize() {

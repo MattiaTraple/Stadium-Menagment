@@ -26,7 +26,7 @@ public class ArrivalProcess {
 
     public static void main(String[] args) {
         EventList eventList = new EventList();
-        ArrivalProcess arrivalProcess = new ArrivalProcess(new Negexp(10), eventList, EventType.ARR);
+        ArrivalProcess arrivalProcess = new ArrivalProcess((ContinuousGenerator) new Negexp(10), eventList, EventType.ARR);
 
         for (int i = 0; i < 10; i++) {
             Clock.getInstance().setClock(arrivalProcess.generateNextEvent());
