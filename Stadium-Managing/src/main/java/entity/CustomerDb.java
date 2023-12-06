@@ -1,11 +1,10 @@
 package entity;
 
 import jakarta.persistence.*;
-import simu.model.*;
 
 @Entity
-@Table(name="Customer")
-public class Customer {
+@Table(name="customer")
+public class CustomerDb {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +21,17 @@ public class Customer {
     private int total;
 
 
-    public Customer(Client a, int id_sim) {
+    public CustomerDb(int id_sim) {
         super();
-        this.id = a.getId();
+        this.id = getId();
         this.id_sim = id_sim;
-        this.arrive = a.getArrivalTime();
-        this.finish = a.getFinishTime();
-        this.total = a.getTotalTime();
+        this.arrive = getArrivalTime();
+        this.finish = getFinishTime();
+        this.total = getTotalTime();
+    }
+
+    public CustomerDb() {
+
     }
 
     public int getDb_id() {
@@ -78,7 +81,6 @@ public class Customer {
     public void setTotal(int total) {
         this.total = total;
     }
-
 }
 
 

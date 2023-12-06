@@ -11,7 +11,7 @@ public class MariaDbConnection {
 
         if (em==null) {
             if (emf==null) {
-                emf = Persistence.createEntityManagerFactory("Stadium");
+                emf = Persistence.createEntityManagerFactory("CompanyMariaDbUnit");
             }
             em = emf.createEntityManager();
         }

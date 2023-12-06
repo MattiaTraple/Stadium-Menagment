@@ -5,27 +5,27 @@ import jakarta.persistence.EntityManager;
 
 public class CustomerDao {
 
-    public void persist(Customer emp) {
+    public void persist(CustomerDb emp) {
         EntityManager em = database.MariaDbConnection.getInstance();
         em.getTransaction().begin();
         em.persist(emp);
         em.getTransaction().commit();
     }
 
-    public Customer find(int id) {
+    public CustomerDb find(int id) {
         EntityManager em = database.MariaDbConnection.getInstance();
-        Customer emp = em.find(Customer.class, id);
+        CustomerDb emp = em.find(CustomerDb.class, id);
         return emp;
     }
 
-    public void update(Customer emp) {
+    public void update(CustomerDb emp) {
         EntityManager em = database.MariaDbConnection.getInstance();
         em.getTransaction().begin();
         em.merge(emp);
         em.getTransaction().commit();
     }
 
-    public void delete(Customer emp) {
+    public void delete(CustomerDb emp) {
         EntityManager em = database.MariaDbConnection.getInstance();
         em.getTransaction().begin();
         em.remove(emp);
