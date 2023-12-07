@@ -16,7 +16,6 @@ public class ArrivalProcess {
         this.type = type;
     }
 
-    private static final String KEY_ = "";
     public double generateNextEvent() {
         double eventTime = Clock.getInstance().getClock() + generator.sample();
         Event t = new Event(type, eventTime);

@@ -46,6 +46,16 @@
                            </textFill>
                         </Label>
                         <Separator fx:id="controlSeperator" prefHeight="13.0" prefWidth="254.0" />
+                        <HBox fx:id="HBox1" prefHeight="34.0" prefWidth="0.0">
+                           <children>
+                              <Text fx:id="textAika" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Time:" textAlignment="CENTER" wrappingWidth="111.41912126541138">
+                                 <font>
+                                    <Font name="Apple Braille" size="17.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="textFieldAika" prefHeight="26.0" prefWidth="138.0" />
+                           </children>
+                        </HBox>
                         <HBox fx:id="HBox2" prefHeight="34.0" prefWidth="254.0">
                            <children>
                               <Text fx:id="textViive" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Delay:" textAlignment="CENTER" wrappingWidth="111.41912126541138">
