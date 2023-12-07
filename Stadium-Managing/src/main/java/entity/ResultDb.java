@@ -1,6 +1,7 @@
 package entity;
 
 import jakarta.persistence.*;
+import simu.model.*;
 
 @Entity
 @Table(name="result")
@@ -40,9 +41,9 @@ public class ResultDb {
         this.totaltime = 0;
         this.vip_customers = 0;
         this.customers = 0;
-        this.checkin = settings[1];
+        this.checkin = settings[2];
         this.security = settings[0];
-        this.ticket = settings[2];
+        this.ticket = settings[1];
         this.catering = settings[3];
     }
 

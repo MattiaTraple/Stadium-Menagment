@@ -1,6 +1,7 @@
 package entity;
 
 import jakarta.persistence.*;
+import simu.model.*;
 
 @Entity
 @Table(name="customer")
@@ -21,13 +22,12 @@ public class CustomerDb {
     private int total;
 
 
-    public CustomerDb(int id_sim) {
+    public CustomerDb(Customer a, int id_sim) {
         super();
-        this.id = getId();
+        this.id = a.getId();
         this.id_sim = id_sim;
-        this.arrive = getArrivalTime();
-        this.finish = getFinishTime();
-        this.total = getTotalTime();
+        this.arrive = (int) a.getArrivalTime();
+        this.finish = a.getFinishTime();
     }
 
     public CustomerDb() {
@@ -74,13 +74,6 @@ public class CustomerDb {
         this.finish = finish;
     }
 
-    public int getTotalTime() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
 }
 
 

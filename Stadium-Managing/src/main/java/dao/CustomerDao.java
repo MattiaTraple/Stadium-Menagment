@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 
 public class CustomerDao {
 
+
     public void persist(CustomerDb emp) {
         EntityManager em = datasource.MariaDbJpaConnection.getInstance();
         em.getTransaction().begin();

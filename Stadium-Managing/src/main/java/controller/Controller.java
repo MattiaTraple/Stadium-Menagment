@@ -15,7 +15,7 @@ public class Controller implements IControllerForM, IControllerForV {
 
     @Override
     public void startsimulation() {
-        engine = new myEngine(this); // luodaan uusi moottorisäie jokaista simulointia varten
+        engine = new MyEngine(this);
         engine.setSimulationTime(ui.getClock());
         engine.setDelay(ui.getDelay());
         ((Thread)engine).start();

@@ -48,4 +48,8 @@ public class Customer {
         System.out.printf(" %sCustomer #%d has been serviced. simu.model.Customer arrived: %.2f removed: %.2f stayed: %.2f mean %.2f%s\n",
                 YELLOW, id, arrivalTime, removalTime, (removalTime-arrivalTime), meanServiceTime, WHITE);
     }
+
+
+    public int getFinishTime() {
+    }
 }
