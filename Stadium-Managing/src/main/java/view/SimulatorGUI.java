@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
 public class SimulatorGUI extends Application {
-    // JavaFX-sovelluksen (käyttöliittymän) käynnistäminen
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
