@@ -30,17 +30,17 @@ public class MyEngine extends Engine {
        Customer a;
 
        switch ((EventType) e.getType()) {
-            case ARR:
+           case CUSTOMER_ARRIVAL:
                 servicePoint[0].addToQueue(new Customer());
                 arrivalProcess.generateNextEvent();
                 break;
 
-           case DEP1:
+           case SECURITY1:
                 a = servicePoint[0].removeFromQueue();
                 servicePoint[1].addToQueue(a);
                 break;
 
-            case DEP2:
+           case SECURITY2:
                 a = servicePoint[1].removeFromQueue();
                 a.setRemovalTime(Clock.getInstance().getClock());
                 a.reportResults();

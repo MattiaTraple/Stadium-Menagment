@@ -1,33 +1,32 @@
 package simu.framework;
 
 public class Event implements Comparable<Event> {
+
     private IEventType type;
-    private double time;
+    private double clock;
 
-    public Event(IEventType type, double time) {
+    public Event(IEventType type, double clock){
         this.type = type;
-        this.time = time;
+        this.clock = clock;
     }
 
-    public double getTime() {
-        return time;
+    public void setType(IEventType type) {
+        this.type = type;
     }
-
     public IEventType getType() {
         return type;
     }
-
-    @Override
-    public String toString() {
-        return time + " [" + type + "]";
+    public void setClock(double clock) {
+        this.clock = clock;
+    }
+    public double getClock() {
+        return clock;
     }
 
     @Override
-    public int compareTo(Event e) {
-        if (time < e.time)
-            return -1;
-        else if (time > e.time)
-            return 1;
+    public int compareTo(Event arg) {
+        if (this.clock < arg.clock) return -1;
+        else if (this.clock > arg.clock) return 1;
         return 0;
     }
 }

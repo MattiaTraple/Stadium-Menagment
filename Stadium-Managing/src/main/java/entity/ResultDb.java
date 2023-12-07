@@ -10,8 +10,11 @@ public class ResultDb {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "total")
-    private int total;
+    @Column(name = "date")
+    private String date;
+
+    @Column(name = "totaltime")
+    private int totaltime;
 
     @Column(name = "customers")
     private int customers;
@@ -19,11 +22,28 @@ public class ResultDb {
     @Column(name = "vip_customers")
     private int vip_customers;
 
-    public ResultDb(int[] settings) {
+    @Column(name = "security")
+    private int security;
+
+    @Column(name = "checkin")
+    private int checkin;
+
+    @Column(name = "ticket")
+    private int ticket;
+
+    @Column(name = "catering")
+    private int catering;
+
+    public ResultDb(int[] settings, String date) {
         super();
-        this.total = settings[0];
-        this.vip_customers = settings[2];
-        this.customers = settings[1];
+        this.date = date;
+        this.totaltime = 0;
+        this.vip_customers = 0;
+        this.customers = 0;
+        this.checkin = settings[1];
+        this.security = settings[0];
+        this.ticket = settings[2];
+        this.catering = settings[3];
     }
 
     public ResultDb() {
@@ -38,14 +58,21 @@ public class ResultDb {
         this.id = id;
     }
 
-    public int getTotal() {
-        return total;
+    public String getDate() {
+        return date;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setDate(String date) {
+        this.date = date;
     }
 
+    public double getTotalTime() {
+        return totaltime;
+    }
+
+    public void setTotalTime(int totaltime) {
+        this.totaltime = totaltime;
+    }
     public int getCustomers() {
         return customers;
     }
@@ -60,5 +87,37 @@ public class ResultDb {
 
     public void setVip_customers(int vip_customers) {
         this.vip_customers = vip_customers;
+    }
+
+    public int getCheckin() {
+        return checkin;
+    }
+
+    public void setCheckin(int checkin) {
+        this.checkin = checkin;
+    }
+
+    public int getSecurity() {
+        return security;
+    }
+
+    public void setSecurity(int security) {
+        this.security = security;
+    }
+
+    public int getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(int ticket) {
+        this.ticket = ticket;
+    }
+
+    public int getCatering() {
+        return ticket;
+    }
+
+    public void setCatering(int catering) {
+        this.catering = catering;
     }
 }
