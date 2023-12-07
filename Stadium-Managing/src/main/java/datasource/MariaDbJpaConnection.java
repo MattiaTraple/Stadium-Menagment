@@ -1,13 +1,13 @@
-package database;
+package datasource;
 
 import jakarta.persistence.*;
 
-public class MariaDbConnection {
+public class MariaDbJpaConnection {
 
     private static EntityManagerFactory emf = null;
     private static EntityManager em = null;
 
-    public synchronized static EntityManager getInstance() {
+    public static EntityManager getInstance() {
 
         if (em==null) {
             if (emf==null) {
