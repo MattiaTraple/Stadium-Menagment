@@ -18,16 +18,14 @@ public class CustomerDb {
     private int arrive;
     @Column(name = "finish")
     private int finish;
-    @Column(name = "total")
-    private int total;
 
 
     public CustomerDb(Customer a, int id_sim) {
         super();
         this.id = a.getId();
         this.id_sim = id_sim;
-        this.arrive = (int) a.getArrivalTime();
-        this.finish = a.getFinishTime();
+        this.arrive = (int) a.getArrivetime();
+        this.finish = (int) a.getFinistime();
     }
 
     public CustomerDb() {

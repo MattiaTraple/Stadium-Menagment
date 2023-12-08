@@ -3,7 +3,7 @@ package simu.framework;
 import java.util.PriorityQueue;
 
 public class EventList {
-    private PriorityQueue<Event> list = new PriorityQueue<Event>();
+    private static PriorityQueue<Event> list = new PriorityQueue<Event>();
 
     public EventList(){
     }
@@ -12,7 +12,7 @@ public class EventList {
         return list.remove();
     }
 
-    public void add(Event t){
+    public static void add(Event t){
         list.add(t);
     }
 

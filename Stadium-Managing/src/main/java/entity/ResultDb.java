@@ -6,6 +6,7 @@ import simu.model.*;
 @Entity
 @Table(name="result")
 public class ResultDb {
+    private static int idCounter = 0;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

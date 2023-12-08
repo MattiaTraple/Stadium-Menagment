@@ -2,7 +2,6 @@ package simu.framework;
 
 import eduni.distributions.ContinuousGenerator;
 
-
 public class ArrivalProcess {
     private ContinuousGenerator generator;
     private EventList eventList;

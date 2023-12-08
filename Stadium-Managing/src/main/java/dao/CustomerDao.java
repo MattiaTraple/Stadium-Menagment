@@ -2,9 +2,9 @@ package dao;
 
 import entity.*;
 import jakarta.persistence.EntityManager;
+import simu.model.Customer;
 
 public class CustomerDao {
-
 
     public void persist(CustomerDb emp) {
         EntityManager em = datasource.MariaDbJpaConnection.getInstance();

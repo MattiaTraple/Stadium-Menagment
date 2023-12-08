@@ -97,7 +97,7 @@ public class MyEngine extends Engine{
     @Override
     protected void executeEvents(Event t) {
         Customer a;
-        CustomerDao e;
+        CustomerDb e;
         boolean linecheck;
         int j;
         switch ((EventType) t.getType()) {
@@ -108,8 +108,8 @@ public class MyEngine extends Engine{
                 while (linecheck) {
 
                     for (int i = 0; i < settings[0]; i++) {
-                        if (servicePoints[i].GetJonoSize() == j) {
-                            servicePoints[i].lisaaJonoon(new Customer());
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(new Customer());
                             System.out.println("Customer Added to line" + i);
                             linecheck = false;
                             break;
@@ -120,15 +120,15 @@ public class MyEngine extends Engine{
                 arrivalProcess.generateNextEvent();
                 break;
             case SECURITY1:
-                a = (Customer) servicePoints[0].otaJonosta(); //Customer moves from security to tickets
+                a = (Customer) servicePoints[0].TakeFromTheLine(); //Customer moves from security to tickets
                 if(!a.isVipCustomer()) {
                 linecheck = true;
                 j=0;
                 while (linecheck) {
 
                     for (int i = 5; i < (5+settings[1]); i++) {
-                        if (servicePoints[i].GetJonoSize() == j) {
-                            servicePoints[i].lisaaJonoon(a);
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
                             System.out.println("Customer Added to Security number" + i);
                             linecheck = false;
                             break;
@@ -136,19 +136,19 @@ public class MyEngine extends Engine{
                     }
                     j++;
                 }} else {
-                    servicePoints[8].lisaaJonoon(a);
+                    servicePoints[8].AddToTheLine(a);
                 }
                 break;
             case SECURITY2:
-                a = (Customer) servicePoints[1].otaJonosta(); //Customer moves from security to tickets
+                a = (Customer) servicePoints[1].TakeFromTheLine(); //Customer moves from security to tickets
                 if(!a.isVipCustomer()) {
                     linecheck = true;
                     j=0;
                     while (linecheck) {
 
                         for (int i = 5; i < (5+settings[1]); i++) {
-                            if (servicePoints[i].GetJonoSize() == j) {
-                                servicePoints[i].lisaaJonoon(a);
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
                                 System.out.println("Customer Added to Security number" + i);
                                 linecheck = false;
                                 break;
@@ -156,19 +156,19 @@ public class MyEngine extends Engine{
                         }
                         j++;
                     }} else {
-                    servicePoints[8].lisaaJonoon(a);
+                    servicePoints[8].AddToTheLine(a);
                 }
                 break;
             case SECURITY3:
-                a = (Customer) servicePoints[2].otaJonosta(); //Customer moves from security to tickets
+                a = (Customer) servicePoints[2].TakeFromTheLine(); //Customer moves from security to tickets
                 if(!a.isVipCustomer()) {
                     linecheck = true;
                     j=0;
                     while (linecheck) {
 
                         for (int i = 5; i < (5+settings[1]); i++) {
-                            if (servicePoints[i].GetJonoSize() == j) {
-                                servicePoints[i].lisaaJonoon(a);
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
                                 System.out.println("Customer Added to Security number" + i);
                                 linecheck = false;
                                 break;
@@ -176,19 +176,19 @@ public class MyEngine extends Engine{
                         }
                         j++;
                     }} else {
-                    servicePoints[8].lisaaJonoon(a);
+                    servicePoints[8].AddToTheLine(a);
                 }
                 break;
             case SECURITY4:
-                a = (Customer) servicePoints[3].otaJonosta(); //Customer moves from security to tickets
+                a = (Customer) servicePoints[3].TakeFromTheLine(); //Customer moves from security to tickets
                 if(!a.isVipCustomer()) {
                     linecheck = true;
                     j=0;
                     while (linecheck) {
 
                         for (int i = 5; i < (5+settings[1]); i++) {
-                            if (servicePoints[i].GetJonoSize() == j) {
-                                servicePoints[i].lisaaJonoon(a);
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
                                 System.out.println("Customer Added to Security number" + i);
                                 linecheck = false;
                                 break;
@@ -196,19 +196,19 @@ public class MyEngine extends Engine{
                         }
                         j++;
                     }} else {
-                    servicePoints[8].lisaaJonoon(a);
+                    servicePoints[8].AddToTheLine(a);
                 }
                 break;
             case TICKET_SELL1:
-                a = (Customer) servicePoints[4].otaJonosta(); //Customer moves from Tickets to checkin
+                a = (Customer) servicePoints[4].TakeFromTheLine(); //Customer moves from Tickets to checkin
                 if(!a.isVipCustomer()) {
                     linecheck = true;
                     j=0;
                     while (linecheck) {
 
                         for (int i = 10; i < (10+settings[2]); i++) {
-                            if (servicePoints[i].GetJonoSize() == j) {
-                                servicePoints[i].lisaaJonoon(a);
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
                                 System.out.println("Customer added to Ticket Sells number" + i);
                                 linecheck = false;
                                 break;
@@ -216,19 +216,19 @@ public class MyEngine extends Engine{
                         }
                         j++;
                     }} else {
-                    servicePoints[8].lisaaJonoon(a);
+                    servicePoints[8].AddToTheLine(a);
                 }
                 break;
             case TICKET_SELL2:
-                a = (Customer) servicePoints[5].otaJonosta(); //Customer moves from Tickets to checkin
+                a = (Customer) servicePoints[5].TakeFromTheLine(); //Customer moves from Tickets to checkin
                 if(!a.isVipCustomer()) {
                     linecheck = true;
                     j=0;
                     while (linecheck) {
 
                         for (int i = 10; i < (10+settings[2]); i++) {
-                            if (servicePoints[i].GetJonoSize() == j) {
-                                servicePoints[i].lisaaJonoon(a);
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
                                 System.out.println("Customer added to Ticket Sells number" + i);
                                 linecheck = false;
                                 break;
@@ -236,20 +236,20 @@ public class MyEngine extends Engine{
                         }
                         j++;
                     }} else {
-                    servicePoints[8].lisaaJonoon(a);
+                    servicePoints[8].AddToTheLine(a);
                 }
                 break;
 
             case TICKET_SELL3:
-                a = (Customer) servicePoints[6].otaJonosta(); //Customer moves from Tickets to checkin
+                a = (Customer) servicePoints[6].TakeFromTheLine(); //Customer moves from Tickets to checkin
                 if(!a.isVipCustomer()) {
                     linecheck = true;
                     j=0;
                     while (linecheck) {
 
                         for (int i = 10; i < (10+settings[2]); i++) {
-                            if (servicePoints[i].GetJonoSize() == j) {
-                                servicePoints[i].lisaaJonoon(a);
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
                                 System.out.println("Customer added to Ticket Sells number" + i);
                                 linecheck = false;
                                 break;
@@ -257,20 +257,20 @@ public class MyEngine extends Engine{
                         }
                         j++;
                     }} else {
-                    servicePoints[8].lisaaJonoon(a);
+                    servicePoints[8].AddToTheLine(a);
                 }
                 break;
 
             case TICKET_SELL4:
-                a = (Customer) servicePoints[7].otaJonosta(); //Customer moves from Tickets to checkin
+                a = (Customer) servicePoints[7].TakeFromTheLine(); //Customer moves from Tickets to checkin
                 if(!a.isVipCustomer()) {
                 linecheck = true;
                 j=0;
                 while (linecheck) {
 
                     for (int i = 10; i < (10+settings[2]); i++) {
-                        if (servicePoints[i].GetJonoSize() == j) {
-                            servicePoints[i].lisaaJonoon(a);
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
                             System.out.println("Customer added to Ticket Sells number" + i);
                             linecheck = false;
                             break;
@@ -278,19 +278,19 @@ public class MyEngine extends Engine{
                     }
                     j++;
                 }} else {
-                    servicePoints[8].lisaaJonoon(a);
+                    servicePoints[8].AddToTheLine(a);
                 }
                 break;
 
             case CHECK_IN1:
-                a = (Customer) servicePoints[8].otaJonosta(); //Customer moves from checkin to catering
+                a = (Customer) servicePoints[8].TakeFromTheLine(); //Customer moves from checkin to catering
                     linecheck = true;
                     j=0;
                     while (linecheck) {
 
                         for (int i = 10; i < (10+settings[3]); i++) {
-                            if (servicePoints[i].GetJonoSize() == j) {
-                                servicePoints[i].lisaaJonoon(a);
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
                                 System.out.println("Customer Added to Check In number" + i);
                                 linecheck = false;
                                 break;
@@ -300,14 +300,14 @@ public class MyEngine extends Engine{
                 }
                 break;
             case CHECK_IN2:
-                a = (Customer) servicePoints[9].otaJonosta(); //Customer moves from checkin to catering
+                a = (Customer) servicePoints[9].TakeFromTheLine(); //Customer moves from checkin to catering
                 linecheck = true;
                 j=0;
                 while (linecheck) {
 
                     for (int i = 10; i < (10+settings[3]); i++) {
-                        if (servicePoints[i].GetJonoSize() == j) {
-                            servicePoints[i].lisaaJonoon(a);
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
                             System.out.println("Customer Added to Check In number" + i);
                             linecheck = false;
                             break;
@@ -318,14 +318,14 @@ public class MyEngine extends Engine{
                 break;
 
             case CHECK_IN3:
-                a = (Customer) servicePoints[10].otaJonosta(); //Customer moves from checkin to catering
+                a = (Customer) servicePoints[10].TakeFromTheLine(); //Customer moves from checkin to catering
                 linecheck = true;
                 j=0;
                 while (linecheck) {
 
                     for (int i = 10; i < (10+settings[3]); i++) {
-                        if (servicePoints[i].GetJonoSize() == j) {
-                            servicePoints[i].lisaaJonoon(a);
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
                             System.out.println("Customer Added to Check In number" + i);
                             linecheck = false;
                             break;
@@ -336,14 +336,14 @@ public class MyEngine extends Engine{
                 break;
 
             case CHECK_IN4:
-                a = (Customer) servicePoints[11].otaJonosta(); //Customer moves from checkin to catering
+                a = (Customer) servicePoints[11].TakeFromTheLine(); //Customer moves from checkin to catering
                 linecheck = true;
                 j=0;
                 while (linecheck) {
 
                     for (int i = 10; i < (10+settings[3]); i++) {
-                        if (servicePoints[i].GetJonoSize() == j) {
-                            servicePoints[i].lisaaJonoon(a);
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
                             System.out.println("Customer Added to Check In number" + i);
                             linecheck = false;
                             break;
@@ -354,14 +354,14 @@ public class MyEngine extends Engine{
                 break;
 
             case CHECK_IN5:
-                a = (Customer) servicePoints[12].otaJonosta(); //Customer moves from checkin to catering
+                a = (Customer) servicePoints[12].TakeFromTheLine(); //Customer moves from checkin to catering
                 linecheck = true;
                 j=0;
                 while (linecheck) {
 
                     for (int i = 10; i < (10+settings[3]); i++) {
-                        if (servicePoints[i].GetJonoSize() == j) {
-                            servicePoints[i].lisaaJonoon(a);
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
                             System.out.println("Customer Added to Check In number" + i);
                             linecheck = false;
                             break;
@@ -371,77 +371,76 @@ public class MyEngine extends Engine{
                 }
                 break;
             case CATERING1:
-                a = (Customer) servicePoints[13].otaJonosta();
+                a = (Customer) servicePoints[13].TakeFromTheLine();
                 if (!a.isVipCustomer()) {
-                    servicePoints[17].lisaaJonoon(a);
+                    servicePoints[17].AddToTheLine(a);
                 } else {
-                    servicePoints[18].lisaaJonoon(a);
+                    servicePoints[18].AddToTheLine(a);
                 }
                 break;
             case CATERING2:
-                a = (Customer) servicePoints[14].otaJonosta();
+                a = (Customer) servicePoints[14].TakeFromTheLine();
                 if (!a.isVipCustomer()) {
-                    servicePoints[17].lisaaJonoon(a);
+                    servicePoints[17].AddToTheLine(a);
                 } else {
-                    servicePoints[18].lisaaJonoon(a);
+                    servicePoints[18].AddToTheLine(a);
                 }
                 break;
             case CATERING3:
-                a = (Customer) servicePoints[15].otaJonosta();
+                a = (Customer) servicePoints[15].TakeFromTheLine();
                 if (!a.isVipCustomer()) {
-                    servicePoints[17].lisaaJonoon(a);
+                    servicePoints[17].AddToTheLine(a);
                 } else {
-                    servicePoints[18].lisaaJonoon(a);
+                    servicePoints[18].AddToTheLine(a);
                 }
                 break;
             case CATERING4:
-                a = (Customer) servicePoints[16].otaJonosta();
+                a = (Customer) servicePoints[16].TakeFromTheLine();
                 if (!a.isVipCustomer()) {
-                    servicePoints[17].lisaaJonoon(a);
+                    servicePoints[17].AddToTheLine(a);
                 } else {
-                    servicePoints[18].lisaaJonoon(a);
+                    servicePoints[18].AddToTheLine(a);
                 }
                 break;
             case CUSTOMER_ARRIVAL:
-                a = (Customer) servicePoints[17].otaJonosta(); //Customer Removed from Simulator
-                a.setRemovalTime(Clock.getInstance().getClock());
-                e = new CustomerDao(a, this.ResultDb.getId());
+                a = (Customer) servicePoints[17].TakeFromTheLine(); //Customer Removed from Simulator
+                a.setFinistime(Clock.getInstance().getClock());
+                e = new CustomerDb(a, this.ResultDb.getId());
                 CustomerDao.persist(e);
-                a.raportti();
+                a.raport();
             case VIP_CUSTOMER_ARRIVAL:
-                a = (Asiakas) servicePoints[18].otaJonosta(); //Customer Removed from Simulator
-                a.setRemovalTime(Clock.getInstance().getClock());
-                e = new AsiakasE(a, this.simulaatio.getId());
-                AsiakasDao.persist(e);
-                simulaatio.setAv_time(a.raportti());
-                simulaatio.setCustomers(Asiakas.getCount());
-                simulaatio.setTime(Kello.getInstance().getAika());
-                SimuDao.update(simulaatio);
-                a.raportti();
+                a = (Customer) servicePoints[18].TakeFromTheLine(); //Customer Removed from Simulator
+                a.setFinistime(Clock.getInstance().getClock());
+                e = new CustomerDb(a, this.ResultDb.getId());
+                CustomerDao.persist(e);
+                ResultDb.setTotalTime(a.raport());
+                ResultDb.setCustomers(Customer.getCount());
+                ResultDb.setTotalTime(Clock.getInstance().getClock());
+                ResultDao.update(ResultDb);
+                a.raport();
 
         }
     }
 
     @Override
-    protected void yritaCTapahtumat(){
-        for (Palvelupiste p: servicePoints){
-            if (!p.onVarattu() && p.onJonossa()){
-                p.aloitaPalvelu();
+    protected void tryCEvents(){
+        for (ServicePoint p: servicePoints){
+            if (!p.isReserved() && p.isOnQueue()){
+                p.StartService();
             }
         }
     }
 
-    public Palvelupiste[] getservicePoints() {
+    public ServicePoint[] getservicePoints() {
         return servicePoints;
     }
 
     @Override
-    protected void tulokset() {
-        System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
-        System.out.println("Tulokset ... puuttuvat vielä");
-        System.out.println("Asiakkaita saapui " + Asiakas.getCount());
+    protected void results() {
+        System.out.println("Simulation ended at " + Clock.getInstance().getClock());
+        System.out.println("Results ... ");
+        System.out.println("Number of the customers " + Customer.getCount());
 
-        // UUTTA graafista
-        kontrolleri.naytaLoppuaika(Kello.getInstance().getAika());
+        controller.showtotaltime(Clock.getInstance().getClock());
     }
 }

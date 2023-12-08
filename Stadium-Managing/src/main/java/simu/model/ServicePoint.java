@@ -1,89 +1,72 @@
 package simu.model;
 
 import eduni.distributions.ContinuousGenerator;
-import eduni.distributions.Normal;
 import simu.framework.Clock;
 import simu.framework.Event;
 import simu.framework.EventList;
-import simu.model.Customer;
+import simu.framework.Trace;
 
 import java.util.LinkedList;
 
+// TODO:
 public class ServicePoint {
-    private static final String GREEN = "\033[0;32m";
-    private static final String WHITE = "\033[0;37m";
-    private LinkedList<Customer> queue;
-    private ContinuousGenerator generator;
-    private EventList eventList;
-    private EventType eventTypeScheduled;
-    private String name;
-    private double serviceTimeSum;
-    private int customerServiced;
+
+    private final LinkedList<Customer> line = new LinkedList<>();
+    private final ContinuousGenerator generator;
+    private final EventList eventList;
+    private final EventType eventType;
+    private int x, y; // Service points location
     private boolean reserved = false;
 
-    public ServicePoint(String name, ContinuousGenerator g, EventList tl, EventType type) {
-        this.name = name;
-        this.generator = g;
-        this.eventList = tl;
-        this.eventTypeScheduled = type;
-
-        this.serviceTimeSum = 0;
-        this.customerServiced = 0;
-
-        queue = new LinkedList<>();
+    public ServicePoint(ContinuousGenerator generator, EventList eventList, EventType eventType, int x, int y){
+        this.eventList = eventList;
+        this.generator = generator;
+        this.eventType = eventType;
+        this.x = x;
+        this.y = y;
     }
 
-    public void addToQueue(Customer a) {
-        queue.addFirst(a);
+    public void AddToTheLine(Customer a){
+        line.add(a);
     }
 
-    public Customer removeFromQueue() {
-        if (queue.size() > 0) {
-            Customer a = queue.removeLast();
-            customerServiced++;
-            reserved = false;
-            return a;
-        } else
-            return null;
+
+    public Customer TakeFromTheLine(){  // Poistetaan palvelussa ollut
+        reserved = false;
+        return line.poll();
     }
 
-    public void beginService() {
-        System.out.printf("%sStarting service %s for the customer #%d%s", GREEN, name, queue.peek().getId(), WHITE);
+
+    public void StartService(){
+
+        Trace.out(Trace.Level.INFO, "Making new server for customer " + line.peek().getId());
 
         reserved = true;
-        double serviceTime = generator.sample();
-        eventList.add(new Event(eventTypeScheduled, Clock.getInstance().getClock() + serviceTime));
+        double servicetime = generator.sample();
+        EventList.add(new Event(eventType, Clock.getInstance().getClock()+servicetime));
     }
 
-    public boolean isReserved() {
+    public boolean isReserved(){
         return reserved;
     }
 
-    public boolean isOnQueue() {
-        return queue.size() > 0;
+    public boolean isOnQueue(){
+        return line.size() != 0;
     }
 
-    public int getCustomerServiced() {
-        return customerServiced;
+    public int GetLineSize() {
+        return line.size();
     }
 
-    public double getMeanServiceTime() {
-        return serviceTimeSum / customerServiced;
+    public LinkedList<Customer> getLineCustomers() {
+        return line;
     }
 
-    public void serve() {
-        Customer a;
-        Normal normalGenerator = new Normal(5, 1);
+    public int getX() {
+        return x;
+    }
 
-        //simu.framework.Clock.getInstance().setClock(simu.framework.Clock.getInstance().getClock() + 5);
-        a = removeFromQueue();
-        while (a != null) {
-            Clock.getInstance().setClock(Clock.getInstance().getClock() + normalGenerator.sample());
-
-            a.setRemovalTime(Clock.getInstance().getClock());
-            a.reportResults();
-
-            a = removeFromQueue();
-        }
+    public int getY() {
+        return y;
     }
 }

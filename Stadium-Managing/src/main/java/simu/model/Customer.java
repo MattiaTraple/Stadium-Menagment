@@ -1,55 +1,75 @@
 package simu.model;
 
 import simu.framework.Clock;
+import simu.framework.Trace;
+import view.Controller;
 
+
+// TODO:
 public class Customer {
-    private static final String YELLOW = "\033[0;33m";
-    private static final String WHITE = "\033[0;37m";
-    private double arrivalTime;
-    private double removalTime;
-    private static double serviceTimeSum;
+    private static int index = 1;
+    private ServicePoint p;
+    private Controller controller = new Controller();
+    private double arrivetime;
+    private double finistime;
     private int id;
     private static int i = 1;
+    private static long sum = 0;
+    public boolean ticket = true;
+
+    public boolean vipcustomer;
 
     public Customer() {
         id = i++;
-
-        arrivalTime = Clock.getInstance().getClock();
-        System.out.printf(" New customer #%d arrived at %.2f", id, arrivalTime);
+        arrivetime = Clock.getInstance().getClock();
+        Trace.out(Trace.Level.INFO, "New Customer:" + id + ":" + arrivetime);
+        vipcustomer = true;
     }
 
-    public Customer(double arrivalTime) {
-        id = i++;
-
-        this.arrivalTime = arrivalTime;
-        System.out.println("New customer #" + id + " arrived at " + arrivalTime);
+    public boolean isTicket() {
+        return ticket;
     }
 
-    public double getArrivalTime() {
-        return arrivalTime;
+    public boolean isVipCustomer() {
+        return vipcustomer;
     }
 
-    public double getRemovalTime() {
-        return removalTime;
-    }
-
-    public void setRemovalTime(double removalTime) {
-        this.removalTime = removalTime;
+    public static int getCount() {
+        return i;
     }
 
     public int getId() {
         return id;
     }
 
-    public void reportResults() {
-        serviceTimeSum += (removalTime - arrivalTime);
-        double meanServiceTime = serviceTimeSum / id;   // id is the number of customers serviced
-
-        System.out.printf(" %sCustomer #%d has been serviced. simu.model.Customer arrived: %.2f removed: %.2f stayed: %.2f mean %.2f%s\n",
-                YELLOW, id, arrivalTime, removalTime, (removalTime-arrivalTime), meanServiceTime, WHITE);
+    public double getFinistime() {
+        return finistime;
     }
 
-
-    public int getFinishTime() {
+    public void setFinistime(double finistime) {
+        this.finistime = finistime;
     }
+
+    public double getArrivetime() {
+        return arrivetime;
+    }
+
+    public void setArrivetime(int arrivetime) {
+        this.arrivetime = arrivetime;
+    }
+
+    public int raport() {
+        Trace.out(Trace.Level.INFO, "Customer " + id + " Arrived: " + arrivetime);
+        Trace.out(Trace.Level.INFO, "Customer " + id + " Exits: " + finistime);
+
+        double stayTime = finistime - arrivetime;
+        Trace.out(Trace.Level.INFO, "Customer " + id + " Stayed for: " + stayTime);
+
+        sum += stayTime;
+
+        System.out.println("Customer " + id + " TotalTime: " + stayTime);
+
+        return (int) stayTime;
+    }
+
 }

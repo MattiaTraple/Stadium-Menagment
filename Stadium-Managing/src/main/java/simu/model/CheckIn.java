@@ -16,8 +16,8 @@ public class CheckIn extends ServicePoint {
     }
 
     @Override
-    public void BeginService() {
+    public void StartService() {
         System.out.println("Check-IN: ");
-        super.BeginService();
+        super.StartService();
     }
 }
