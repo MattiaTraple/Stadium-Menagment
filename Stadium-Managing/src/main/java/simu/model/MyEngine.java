@@ -402,23 +402,34 @@ public class MyEngine extends Engine{
                     servicePoints[18].AddToTheLine(a);
                 }
                 break;
-            case CUSTOMER_ARRIVAL:
-                a = (Customer) servicePoints[17].TakeFromTheLine(); //Customer Removed from Simulator
-                a.setFinistime(Clock.getInstance().getClock());
-                e = new CustomerDb(a, this.ResultDb.getId());
-                CustomerDao.persist(e);
-                a.raport();
-            case VIP_CUSTOMER_ARRIVAL:
-                a = (Customer) servicePoints[18].TakeFromTheLine(); //Customer Removed from Simulator
-                a.setFinistime(Clock.getInstance().getClock());
-                e = new CustomerDb(a, this.ResultDb.getId());
-                CustomerDao.persist(e);
-                ResultDb.setTotalTime(a.raport());
-                ResultDb.setCustomers(Customer.getCount());
-                ResultDb.setTotalTime(Clock.getInstance().getClock());
-                ResultDao.update(ResultDb);
-                a.raport();
 
+            case CUSTOMER_ARRIVAL:
+                a = (Customer) servicePoints[17].TakeFromTheLine(); // Customer Removed from Simulator
+                a.setFinistime(Clock.getInstance().getClock());
+                e = new CustomerDb(a, this.ResultDb.getId());
+                CustomerDao.persist(e);
+
+                // Update ResultDb based on regular customer
+                ResultDb.setTotalTime(a.raport());
+                ResultDb.setCustomers(ResultDb.getCustomers() + 1); // Increment total customers count
+                ResultDao.update(ResultDb);
+
+                a.raport();
+                break;
+
+            case VIP_CUSTOMER_ARRIVAL:
+                a = (Customer) servicePoints[18].TakeFromTheLine(); // Customer Removed from Simulator
+                a.setFinistime(Clock.getInstance().getClock());
+                e = new CustomerDb(a, this.ResultDb.getId());
+                CustomerDao.persist(e);
+
+                // Update ResultDb based on VIP customer
+                ResultDb.setTotalTime(a.raport());
+                ResultDb.setVip_customers(ResultDb.getVip_customers() + 1); // Increment VIP customers count
+                ResultDao.update(ResultDb);
+
+                a.raport();
+                break;
         }
     }
 

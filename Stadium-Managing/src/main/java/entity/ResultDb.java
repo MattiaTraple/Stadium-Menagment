@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import simu.model.*;
 
 @Entity
-@Table(name="result")
+@Table(name = "result")
 public class ResultDb {
     private static int idCounter = 0;
 
@@ -68,13 +68,14 @@ public class ResultDb {
         this.date = date;
     }
 
-    public double getTotalTime() {
+    public int getTotalTime() {
         return totaltime;
     }
 
     public void setTotalTime(int totaltime) {
         this.totaltime = totaltime;
     }
+
     public int getCustomers() {
         return customers;
     }
@@ -116,7 +117,7 @@ public class ResultDb {
     }
 
     public int getCatering() {
-        return ticket;
+        return catering;
     }
 
     public void setCatering(int catering) {

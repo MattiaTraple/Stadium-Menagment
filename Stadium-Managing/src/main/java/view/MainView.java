@@ -1,7 +1,9 @@
 package view;
 
+import javafx.application.Application;
+
 public class MainView {
     public static void main(String[] args) {
-        SimulatorGUI.launch(SimulatorGUI.class);
+        Application.launch(SimulatorGUI.class);
     }
 }
