@@ -12,7 +12,7 @@ public class Ticket extends ServicePoint {
 
     @Override
     public void StartService() {
-        System.out.println("Passport Control: ");
+        System.out.println("Ticket Control: ");
         super.StartService();
     }
 
