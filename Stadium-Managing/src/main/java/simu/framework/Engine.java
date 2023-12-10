@@ -1,6 +1,6 @@
 package simu.framework;
 
-import controller.IControllerForM; // UUSI
+import controller.IControllerForM;
 import view.IController;
 
 public abstract class Engine extends Thread implements IEngine{
@@ -12,13 +12,13 @@ public abstract class Engine extends Thread implements IEngine{
 
     protected EventList eventList;
 
-    protected IControllerForM controller; // UUSI
+    protected IControllerForM controller;
 
 
-    public Engine(IControllerForM controller){  // UUSITTU
-        this.controller = controller;  //UUSI
+    public Engine(IControllerForM controller){
+        this.controller = controller;
 
-        clock = Clock.getInstance(); // Otetaan kello muuttujaan yksinkertaistamaan koodia
+        clock = Clock.getInstance();
 
         eventList = new EventList();
     }
@@ -33,16 +33,16 @@ public abstract class Engine extends Thread implements IEngine{
         this.delay = delay;
     }
 
-    @Override // UUSI
+    @Override
     public long getDelay() {
         return delay;
     }
 
     @Override
-    public void run(){ // Entinen aja()
-        covers(); // luodaan mm. ensimmäinen tapahtuma
+    public void run(){
+        covers();
         while (simulating()){
-            delay(); // UUSI
+            delay();
             clock.setClock(present());
             executeBEvents();
             tryCEvents();
