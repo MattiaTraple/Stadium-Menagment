@@ -26,8 +26,8 @@
          <menus>
             <Menu mnemonicParsing="false" text="Main">
                <items>
-                  <MenuItem fx:id="startButton" mnemonicParsing="false" text="Start" />
-                  <MenuItem fx:id="results" mnemonicParsing="false" text="Results" />
+                  <MenuItem fx:id="startButton" mnemonicParsing="false" text="Start" onAction=""/>
+                  <MenuItem fx:id="results" mnemonicParsing="false" text="Results" onAction=""/>
                </items>
             </Menu>
          </menus>
