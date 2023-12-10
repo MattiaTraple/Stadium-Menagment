@@ -186,7 +186,7 @@
                                                 <Image url="@/icons/Human.png" />
                                              </image>
                                           </ImageView>
-                                          <Text fx:id="textCheckin1" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duty Free" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <Text fx:id="textCheckin1" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Checkin" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
                                              </font>
@@ -203,7 +203,7 @@
                                              <image>
                                                 <Image url="@/icons/Human.png" />                                             </image>
                                           </ImageView>
-                                          <Text fx:id="textCheckin11" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <Text fx:id="textCheckin11" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
                                              </font>
@@ -220,7 +220,7 @@
                                              <image>
                                                 <Image url="@/icons/Human.png" />                                             </image>
                                           </ImageView>
-                                          <Text fx:id="textCheckin111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passport control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <Text fx:id="textCheckin111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket sells" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
                                              </font>
@@ -238,8 +238,6 @@
                                                 <Font name="Apple Braille" size="16.0" />
                                              </font>
                                           </Text>
-                                          <Circle fill="#1fff46" layoutX="37.0" layoutY="24.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
-                                          <Circle fill="#ff2121" layoutX="65.0" layoutY="24.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
                                        </children>
                                     </AnchorPane>
                                  </children>
