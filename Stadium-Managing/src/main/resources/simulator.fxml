@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="831.0" prefWidth="1328.0">
+    <children>
+        <MenuBar prefHeight="27.0" prefWidth="869.0" VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <HBox prefHeight="803.0" prefWidth="1327.0">
+                    <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="803.0" fitWidth="733.0" layoutX="4.0" layoutY="17.0">
+                                    <image>
+                                        <Image url="@../../../../../Downloads/main1.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="check4" fitHeight="100.0" fitWidth="200.0" layoutX="476.0" layoutY="545.0">
+                                    <image>
+                                        <Image url="@../../../../../Downloads/checkin2.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="check3" fitHeight="100.0" fitWidth="200.0" layoutX="413.0" layoutY="576.0">
+                                    <image>
+                                        <Image url="@../../../../../Downloads/checkin2.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="check2" fitHeight="100.0" fitWidth="200.0" layoutX="350.0" layoutY="607.0">
+                                    <image>
+                                        <Image url="@../../../../../Downloads/checkin2.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="check1" fitHeight="100.0" fitWidth="200.0" layoutX="287.0" layoutY="638.0">
+                                    <image>
+                                        <Image url="@../../../../../Downloads/checkin2.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="securityControl" fitHeight="87.0" fitWidth="126.0" layoutX="272.0" layoutY="425.0">
+                                    <image>
+                                        <Image url="@Man.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fitHeight="87.0" fitWidth="118.0" layoutX="158.0" layoutY="375.0">
+                                    <image>
+                                        <Image url="@Women.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fitHeight="87.0" fitWidth="118.0" layoutX="217.0" layoutY="398.0">
+                                    <image>
+                                        <Image url="@Women.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="securityControl1" fitHeight="87.0" fitWidth="126.0" layoutX="82.0" layoutY="406.0">
+                                    <image>
+                                        <Image url="@Man.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="securityControl2" fitHeight="87.0" fitWidth="126.0" layoutX="144.0" layoutY="428.0">
+                                    <image>
+                                        <Image url="@Man.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="securityControl3" fitHeight="87.0" fitWidth="126.0" layoutX="209.0" layoutY="453.0">
+                                    <image>
+                                        <Image url="@Man.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="passportCheck" fitHeight="71.0" fitWidth="96.0" layoutX="547.0" layoutY="227.0">
+                                    <image>
+                                        <Image url="@PassportChecker.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="passportCheck" fitHeight="71.0" fitWidth="96.0" layoutX="509.0" layoutY="242.0">
+                                    <image>
+                                        <Image url="@PassportChecker.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="passportCheck" fitHeight="71.0" fitWidth="96.0" layoutX="455.0" layoutY="217.0">
+                                    <image>
+                                        <Image url="@PassportChecker.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fitHeight="71.0" fitWidth="89.0" layoutX="603.0" layoutY="254.0">
+                                    <image>
+                                        <Image url="@PassportChecker.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="passportCheck" fitHeight="71.0" fitWidth="96.0" layoutX="493.0" layoutY="202.0">
+                                    <image>
+                                        <Image url="@PassportChecker.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="passportCheck" fitHeight="71.0" fitWidth="96.0" layoutX="563.0" layoutY="266.0">
+                                    <image>
+                                        <Image url="@PassportChecker.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="dutyfreecheck" fitHeight="55.0" fitWidth="75.0" layoutX="307.0" layoutY="299.0">
+                                    <image>
+                                        <Image url="@cashier.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="dutyfreecheck" fitHeight="55.0" fitWidth="75.0" layoutX="355.0" layoutY="280.0">
+                                    <image>
+                                        <Image url="@cashier.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="dutyfreecheck" fitHeight="55.0" fitWidth="75.0" layoutX="401.0" layoutY="261.0">
+                                    <image>
+                                        <Image url="@cashier.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                        <LineChart prefHeight="803.0" prefWidth="658.0">
+                            <xAxis>
+                                <CategoryAxis side="BOTTOM" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis side="LEFT" />
+                            </yAxis>
+                        </LineChart>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

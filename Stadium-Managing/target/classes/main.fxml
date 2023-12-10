@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -10,36 +43,39 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller">
    <children>
-      <MenuBar fx:id="MenuBar">
+      <MenuBar fx:id="MenuBar" VBox.vgrow="NEVER">
          <menus>
-            <Menu mnemonicParsing="false" text="Main">
+            <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="startButton" mnemonicParsing="false" text="Start" />
-                  <MenuItem fx:id="results" mnemonicParsing="false" text="Results" />
+                  <MenuItem fx:id="startButton" mnemonicParsing="false" onAction="#aloita" text="Start" />
+                  <MenuItem fx:id="results" mnemonicParsing="false" text="Results" onAction="#results"/>
                </items>
             </Menu>
          </menus>
       </MenuBar>
-      <SplitPane fx:id="SplitPane" dividerPositions="0.28229398663697103" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0">
+      <SplitPane fx:id="SplitPane" dividerPositions="0.28229398663697103" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <items>
             <AnchorPane fx:id="AnchorPane">
                <children>
                   <VBox fx:id="VBox" layoutX="-2.0" layoutY="-1.0" prefHeight="545.0" prefWidth="254.0">
                      <children>
-                        <Label fx:id="controlText" alignment="CENTER" minWidth="60.0" prefHeight="32.0" prefWidth="254.0" style="&#10;" text="CONTROL" textAlignment="CENTER" wrapText="false">
+                        <Label fx:id="controlText" alignment="CENTER" minWidth="60.0" prefHeight="23.0" prefWidth="255.0" style="&#10;" text="CONTROL" textAlignment="CENTER" wrapText="false">
                            <font>
-                              <Font size="14.0" fx:id="x1" />
+                              <Font size="18.0" fx:id="x1" />
                            </font>
                            <textFill>
                               <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
@@ -48,9 +84,9 @@
                         <Separator fx:id="controlSeperator" prefHeight="13.0" prefWidth="254.0" />
                         <HBox fx:id="HBox1" prefHeight="34.0" prefWidth="0.0">
                            <children>
-                              <Text fx:id="textAika" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Time:" textAlignment="CENTER" wrappingWidth="111.41912126541138">
+                              <Text fx:id="textAika" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter time:" textAlignment="CENTER" wrappingWidth="111.41912126541138">
                                  <font>
-                                    <Font name="Apple Braille" size="17.0" />
+                                    <Font name="Apple Braille" size="16.0" />
                                  </font>
                               </Text>
                               <TextField fx:id="textFieldAika" prefHeight="26.0" prefWidth="138.0" />
@@ -60,63 +96,63 @@
                            <children>
                               <Text fx:id="textViive" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Delay:" textAlignment="CENTER" wrappingWidth="111.41912126541138">
                                  <font>
-                                    <Font name="Apple Braille" size="17.0" />
+                                    <Font name="Apple Braille" size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="textFieldViive" prefHeight="15.0" prefWidth="140.0" />
+                              <TextField fx:id="textFieldViive" prefHeight="26.0" prefWidth="138.0" />
                            </children>
                         </HBox>
                         <HBox fx:id="HBox3" prefHeight="34.0" prefWidth="159.0">
                            <children>
                               <Separator fx:id="seperator" opacity="0.0" orientation="VERTICAL" prefHeight="34.0" prefWidth="64.0" />
-                              <Button fx:id="buttonNopeuta" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" text="Faster" />
-                              <Button fx:id="buttonHidasta" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" text="Slower" textAlignment="CENTER">
+                              <Button fx:id="buttonNopeuta" alignment="CENTER" mnemonicParsing="false" onAction="#buttonNopeuta" text="Fater" />
+                              <Button fx:id="buttonHidasta" alignment="CENTER" mnemonicParsing="false" onAction="#buttonHidasta" text="Slower" textAlignment="CENTER">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </Button>
                            </children>
                         </HBox>
-                        <Label fx:id="labelServicePoints" alignment="CENTER" minWidth="60.0" prefHeight="23.0" prefWidth="255.0" style="&#10;" text="SERVICES" textAlignment="CENTER" wrapText="false">
+                        <Label fx:id="labelServicePoints" alignment="CENTER" minWidth="60.0" prefHeight="23.0" prefWidth="255.0" style="&#10;" text="SERVICE POINTS" textAlignment="CENTER" wrapText="false">
                            <font>
-                              <Font size="14.0" fx:id="x11" />
+                              <Font size="18.0" fx:id="x11" />
                            </font>
                            <textFill>
                               <Color red="0.624" green="0.624" blue="0.624" fx:id="x21" />
                            </textFill>
                         </Label>
                         <Separator fx:id="seperator2" prefHeight="13.0" prefWidth="254.0" />
-                        <HBox fx:id="HBoxCheckIn" prefHeight="34.0" prefWidth="0.0">
-                           <children>
-                              <Text fx:id="textCheckin" strokeType="OUTSIDE" strokeWidth="0.0" text="Security" textAlignment="CENTER" wrappingWidth="163.29811143875122">
-                                 <font>
-                                    <Font name="Apple Braille" size="16.0" />
-                                 </font>
-                              </Text>
-                              <Button fx:id="buttonPlus" mnemonicParsing="false" text="+" />
-                              <Button fx:id="buttonMinus" mnemonicParsing="false" text="-" />
-                           </children>
-                        </HBox>
                         <HBox fx:id="HBoxSecurity" prefHeight="34.0" prefWidth="0.0">
                            <children>
-                              <Text fx:id="textSecurity" strokeType="OUTSIDE" strokeWidth="0.0" text=" Ticket sales " textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                              <Text fx:id="textSecurity" strokeType="OUTSIDE" strokeWidth="0.0" text="Security" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                  <font>
                                     <Font name="Apple Braille" size="16.0" />
                                  </font>
                               </Text>
-                              <Button fx:id="buttonPlusSecurity" mnemonicParsing="false" text="+" />
-                              <Button fx:id="buttonMinusSecurity" mnemonicParsing="false" text="-" />
+                              <Button fx:id="buttonPlusSecurity" mnemonicParsing="false" onAction="#buttonPlusSecurity" text="+" />
+                              <Button fx:id="buttonMinusSecurity" mnemonicParsing="false" onAction="#buttonMinusSecurity" text="-" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="HBoxCheckIn" prefHeight="34.0" prefWidth="0.0">
+                           <children>
+                              <Text fx:id="textCheckin" strokeType="OUTSIDE" strokeWidth="0.0" text="Check-In" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                 <font>
+                                    <Font name="Apple Braille" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Button fx:id="buttonPlus" mnemonicParsing="false" onAction="#ButtonPlusCheckIn" text="+" />
+                              <Button fx:id="buttonMinus" mnemonicParsing="false" onAction="#ButtonMinusCheckIn" text="-" />
                            </children>
                         </HBox>
                         <HBox fx:id="HBoxPassport1" prefHeight="34.0" prefWidth="0.0">
                            <children>
-                              <Text fx:id="textPassport1" strokeType="OUTSIDE" strokeWidth="0.0" text="Check-in" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                              <Text fx:id="textPassport1" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket sells" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                  <font>
                                     <Font name="Apple Braille" size="16.0" />
                                  </font>
                               </Text>
-                              <Button fx:id="buttonPlusPassport" mnemonicParsing="false" text="+" />
-                              <Button fx:id="buttonMinusPassport" mnemonicParsing="false" text="-" />
+                              <Button fx:id="buttonPlusPassport" mnemonicParsing="false" onAction="#ButtonPlusPassport" text="+" />
+                              <Button fx:id="buttonMinusPassport" mnemonicParsing="false" onAction="#ButtonMinusPassport" text="-" />
                            </children>
                         </HBox>
                         <HBox fx:id="HBoxPassport" prefHeight="34.0" prefWidth="0.0">
@@ -126,13 +162,13 @@
                                     <Font name="Apple Braille" size="16.0" />
                                  </font>
                               </Text>
-                              <Button fx:id="buttonPlusDutyFree" mnemonicParsing="false" text="+" />
-                              <Button fx:id="buttonMinusDutyFree" mnemonicParsing="false" text="-" />
+                              <Button fx:id="buttonPlusDutyFree" mnemonicParsing="false" onAction="#buttonPlusDuty" text="+" />
+                              <Button fx:id="buttonMinusDutyFree" mnemonicParsing="false" onAction="#buttonMinusDuty" text="-" />
                            </children>
                         </HBox>
                         <Label fx:id="labelServicePoints1" alignment="CENTER" minWidth="60.0" prefHeight="23.0" prefWidth="255.0" style="&#10;" text="GUIDE" textAlignment="CENTER" wrapText="false">
                            <font>
-                              <Font size="14.0" fx:id="x111" />
+                              <Font size="18.0" fx:id="x111" />
                            </font>
                            <textFill>
                               <Color red="0.624" green="0.624" blue="0.624" fx:id="x211" />
@@ -145,14 +181,14 @@
                                  <children>
                                     <AnchorPane prefHeight="54.0" prefWidth="258.0">
                                        <children>
-                                          <Text fx:id="textCheckin1" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <ImageView fitHeight="54.0" fitWidth="124.0" layoutX="34.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@/icons/Human.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="textCheckin1" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duty Free" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="textCheckin12" layoutX="24.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image here" textAlignment="CENTER" wrappingWidth="75.29811143875122">
-                                             <font>
-                                                <Font name="Apple Braille" size="10.0" />
                                              </font>
                                           </Text>
                                        </children>
@@ -163,14 +199,13 @@
                                  <children>
                                     <AnchorPane prefHeight="54.0" prefWidth="258.0">
                                        <children>
-                                          <Text fx:id="textCheckin11" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket sales" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@/icons/Human.png" />                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="textCheckin11" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="textCheckin121" layoutX="31.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image here" textAlignment="CENTER" wrappingWidth="75.29811143875122">
-                                             <font>
-                                                <Font name="Apple Braille" size="10.0" />
                                              </font>
                                           </Text>
                                        </children>
@@ -181,14 +216,13 @@
                                  <children>
                                     <AnchorPane prefHeight="54.0" prefWidth="258.0">
                                        <children>
-                                          <Text fx:id="textCheckin111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check-in" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="34.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@/icons/Human.png" />                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="textCheckin111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passport control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
-                                             </font>
-                                          </Text>
-                                          <Text fx:id="textCheckin122" layoutX="30.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image here" textAlignment="CENTER" wrappingWidth="75.29811143875122">
-                                             <font>
-                                                <Font name="Apple Braille" size="10.0" />
                                              </font>
                                           </Text>
                                        </children>
@@ -199,16 +233,13 @@
                                  <children>
                                     <AnchorPane prefHeight="54.0" prefWidth="258.0">
                                        <children>
-                                          <Text fx:id="textCheckin1111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catering" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <Text fx:id="textCheckin1111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passenger" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="textCheckin123" layoutX="34.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image here" textAlignment="CENTER" wrappingWidth="75.29811143875122">
-                                             <font>
-                                                <Font name="Apple Braille" size="10.0" />
-                                             </font>
-                                          </Text>
+                                          <Circle fill="#1fff46" layoutX="37.0" layoutY="24.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#ff2121" layoutX="65.0" layoutY="24.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -223,14 +254,148 @@
                <content>
                   <StackPane fx:id="stackPane" prefHeight="545.0" prefWidth="641.0">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="counter30" fitHeight="34.0" fitWidth="12.0" layoutX="365.0" layoutY="447.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="544.0" fitWidth="624.0" layoutX="5.0" layoutY="5.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="security1" fitHeight="41.0" fitWidth="67.0" layoutX="271.0" layoutY="369.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="security3" fitHeight="41.0" fitWidth="67.0" layoutX="274.0" layoutY="402.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="security2" fitHeight="41.0" fitWidth="67.0" layoutX="212.0" layoutY="397.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="control5" fitHeight="56.0" fitWidth="40.0" layoutX="234.0" layoutY="316.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="counter2" fitHeight="45.0" fitWidth="30.0" layoutX="316.0" layoutY="457.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="counter3" fitHeight="45.0" fitWidth="32.0" layoutX="296.0" layoutY="466.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="counter1" fitHeight="45.0" fitWidth="30.0" layoutX="364.0" layoutY="441.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="counter4" fitHeight="45.0" fitWidth="32.0" layoutX="274.0" layoutY="477.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="control4" fitHeight="56.0" fitWidth="40.0" layoutX="203.0" layoutY="331.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="217.0" fitWidth="327.0" layoutX="277.0" layoutY="313.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="control3" fitHeight="56.0" fitWidth="41.0" layoutX="171.0" layoutY="347.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="control2" fitHeight="55.0" fitWidth="43.0" layoutX="137.0" layoutY="362.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="control1" fitHeight="59.0" fitWidth="45.0" layoutX="101.0" layoutY="377.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="security4" fitHeight="41.0" fitWidth="67.0" layoutX="217.0" layoutY="429.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="security5" fitHeight="41.0" fitWidth="67.0" layoutX="156.0" layoutY="430.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="103.0" fitWidth="91.0" layoutX="408.0" layoutY="105.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="103.0" fitWidth="91.0" layoutX="446.0" layoutY="126.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="103.0" fitWidth="91.0" layoutX="485.0" layoutY="147.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="74.0" fitWidth="74.0" layoutX="408.0" layoutY="202.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="cashier1" fitHeight="65.0" fitWidth="84.0" layoutX="300.0" layoutY="209.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="cashier2" fitHeight="65.0" fitWidth="84.0" layoutX="300.0" layoutY="239.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="cashier3" fitHeight="65.0" fitWidth="84.0" layoutX="300.0" layoutY="219.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="cashier4" fitHeight="65.0" fitWidth="84.0" layoutX="300.0" layoutY="229.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="74.0" fitWidth="74.0" layoutX="360.0" layoutY="177.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <Canvas fx:id="canvasy" height="545.0" width="633.0" />
+                           </children>
+                        </AnchorPane>
                      </children>
                   </StackPane>
                </content>
             </ScrollPane>
          </items>
       </SplitPane>
-      <HBox id="HBox" fx:id="HBox" alignment="CENTER_LEFT" spacing="5.0">
+      <HBox id="HBox" fx:id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
          <children>
             <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
          </children>
