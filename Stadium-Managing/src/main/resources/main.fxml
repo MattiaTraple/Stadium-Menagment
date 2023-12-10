@@ -61,7 +61,7 @@
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="startButton" mnemonicParsing="false" onAction="#aloita" text="Start" />
+                  <MenuItem fx:id="startButton" mnemonicParsing="false" onAction="#start" text="Start" />
                   <MenuItem fx:id="results" mnemonicParsing="false" text="Results" onAction="#results"/>
                </items>
             </Menu>
@@ -105,8 +105,8 @@
                         <HBox fx:id="HBox3" prefHeight="34.0" prefWidth="159.0">
                            <children>
                               <Separator fx:id="seperator" opacity="0.0" orientation="VERTICAL" prefHeight="34.0" prefWidth="64.0" />
-                              <Button fx:id="buttonNopeuta" alignment="CENTER" mnemonicParsing="false" onAction="#buttonNopeuta" text="Fater" />
-                              <Button fx:id="buttonHidasta" alignment="CENTER" mnemonicParsing="false" onAction="#buttonHidasta" text="Slower" textAlignment="CENTER">
+                              <Button fx:id="buttonFaster" alignment="CENTER" mnemonicParsing="false" onAction="#buttonNopeuta" text="Faster" />
+                              <Button fx:id="buttonSlower" alignment="CENTER" mnemonicParsing="false" onAction="#buttonHidasta" text="Slower" textAlignment="CENTER">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -140,8 +140,8 @@
                                     <Font name="Apple Braille" size="16.0" />
                                  </font>
                               </Text>
-                              <Button fx:id="buttonPlus" mnemonicParsing="false" onAction="#ButtonPlusCheckIn" text="+" />
-                              <Button fx:id="buttonMinus" mnemonicParsing="false" onAction="#ButtonMinusCheckIn" text="-" />
+                              <Button fx:id="buttonPlusCheck" mnemonicParsing="false" onAction="#ButtonPlusCheckIn" text="+" />
+                              <Button fx:id="buttonMinusCheck" mnemonicParsing="false" onAction="#ButtonMinusCheckIn" text="-" />
                            </children>
                         </HBox>
                         <HBox fx:id="HBoxPassport1" prefHeight="34.0" prefWidth="0.0">
@@ -151,8 +151,8 @@
                                     <Font name="Apple Braille" size="16.0" />
                                  </font>
                               </Text>
-                              <Button fx:id="buttonPlusPassport" mnemonicParsing="false" onAction="#ButtonPlusPassport" text="+" />
-                              <Button fx:id="buttonMinusPassport" mnemonicParsing="false" onAction="#ButtonMinusPassport" text="-" />
+                              <Button fx:id="buttonPlusTicketSells" mnemonicParsing="false" onAction="#ButtonPlusTicket" text="+" />
+                              <Button fx:id="buttonMinusTicketSells" mnemonicParsing="false" onAction="#ButtonMinusTicket" text="-" />
                            </children>
                         </HBox>
                         <HBox fx:id="HBoxPassport" prefHeight="34.0" prefWidth="0.0">
@@ -162,8 +162,8 @@
                                     <Font name="Apple Braille" size="16.0" />
                                  </font>
                               </Text>
-                              <Button fx:id="buttonPlusDutyFree" mnemonicParsing="false" onAction="#buttonPlusDuty" text="+" />
-                              <Button fx:id="buttonMinusDutyFree" mnemonicParsing="false" onAction="#buttonMinusDuty" text="-" />
+                              <Button fx:id="buttonPlusCateringService" mnemonicParsing="false" onAction="#buttonPlusCatering" text="+" />
+                              <Button fx:id="buttonMinusCateringService" mnemonicParsing="false" onAction="#buttonMinusCatering" text="-" />
                            </children>
                         </HBox>
                         <Label fx:id="labelServicePoints1" alignment="CENTER" minWidth="60.0" prefHeight="23.0" prefWidth="255.0" style="&#10;" text="GUIDE" textAlignment="CENTER" wrapText="false">
@@ -186,7 +186,7 @@
                                                 <Image url="@/icons/Human.png" />
                                              </image>
                                           </ImageView>
-                                          <Text fx:id="textCheckin1" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Checkin" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <Text fx:id="textCheckin1" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
                                              </font>
@@ -203,7 +203,7 @@
                                              <image>
                                                 <Image url="@/icons/Human.png" />                                             </image>
                                           </ImageView>
-                                          <Text fx:id="textCheckin11" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <Text fx:id="textCheckin11" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Sells" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
                                              </font>
@@ -218,9 +218,10 @@
                                        <children>
                                           <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="34.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@/icons/Human.png" />                                             </image>
+                                                <Image url="@/icons/Human.png" />
+                                             </image>
                                           </ImageView>
-                                          <Text fx:id="textCheckin111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket sells" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <Text fx:id="textCheckin111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check IN" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
                                              </font>
@@ -233,7 +234,7 @@
                                  <children>
                                     <AnchorPane prefHeight="54.0" prefWidth="258.0">
                                        <children>
-                                          <Text fx:id="textCheckin1111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passenger" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                          <Text fx:id="textCheckin1111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catering" textAlignment="CENTER" wrappingWidth="163.29811143875122">
                                              <font>
                                                 <Font name="Apple Braille" size="16.0" />
                                              </font>
@@ -279,32 +280,27 @@
                                     <Image url="@/icons/Human.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="control5" fitHeight="56.0" fitWidth="40.0" layoutX="234.0" layoutY="316.0">
+                              <ImageView fx:id="checkin1" fitHeight="45.0" fitWidth="30.0" layoutX="316.0" layoutY="457.0">
                                  <image>
                                     <Image url="@/icons/Human.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="counter2" fitHeight="45.0" fitWidth="30.0" layoutX="316.0" layoutY="457.0">
+                              <ImageView fx:id="checkin2" fitHeight="45.0" fitWidth="32.0" layoutX="296.0" layoutY="466.0">
                                  <image>
                                     <Image url="@/icons/Human.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="counter3" fitHeight="45.0" fitWidth="32.0" layoutX="296.0" layoutY="466.0">
+                              <ImageView fx:id="checkin3" fitHeight="45.0" fitWidth="30.0" layoutX="364.0" layoutY="441.0">
                                  <image>
                                     <Image url="@/icons/Human.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="counter1" fitHeight="45.0" fitWidth="30.0" layoutX="364.0" layoutY="441.0">
+                              <ImageView fx:id="checkin4" fitHeight="45.0" fitWidth="32.0" layoutX="274.0" layoutY="477.0">
                                  <image>
                                     <Image url="@/icons/Human.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="counter4" fitHeight="45.0" fitWidth="32.0" layoutX="274.0" layoutY="477.0">
-                                 <image>
-                                    <Image url="@/icons/Human.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="control4" fitHeight="56.0" fitWidth="40.0" layoutX="203.0" layoutY="331.0">
+                              <ImageView fx:id="checkin5" fitHeight="45.0" fitWidth="32.0" layoutX="274.0" layoutY="490.0">
                                  <image>
                                     <Image url="@/icons/Human.png" />
                                  </image>
@@ -314,17 +310,22 @@
                                     <Image url="@/icons/Human.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="control3" fitHeight="56.0" fitWidth="41.0" layoutX="171.0" layoutY="347.0">
+                              <ImageView fx:id="ticket1" fitHeight="56.0" fitWidth="40.0" layoutX="203.0" layoutY="331.0">
                                  <image>
                                     <Image url="@/icons/Human.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="control2" fitHeight="55.0" fitWidth="43.0" layoutX="137.0" layoutY="362.0">
+                              <ImageView fx:id="ticket2" fitHeight="56.0" fitWidth="41.0" layoutX="171.0" layoutY="347.0">
                                  <image>
                                     <Image url="@/icons/Human.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="control1" fitHeight="59.0" fitWidth="45.0" layoutX="101.0" layoutY="377.0">
+                              <ImageView fx:id="ticket3" fitHeight="55.0" fitWidth="43.0" layoutX="137.0" layoutY="362.0">
+                                 <image>
+                                    <Image url="@/icons/Human.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="ticket4" fitHeight="59.0" fitWidth="45.0" layoutX="101.0" layoutY="377.0">
                                  <image>
                                     <Image url="@/icons/Human.png" />
                                  </image>

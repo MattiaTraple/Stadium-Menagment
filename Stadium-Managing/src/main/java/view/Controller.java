@@ -40,29 +40,27 @@ public class Controller implements IControllerForM, IControllerForV {
     @FXML
     private TextField textFieldViive;
     @FXML
-    private Button buttonNopeuta;
+    private Button buttonFaster;
     @FXML
-    private Button buttonHidasta;
+    private Button buttonSlower;
     @FXML
     private Button buttonKaynnista;
-    @FXML
-    private Button buttonPlus;
-    @FXML
-    private Button buttonMinus;
     @FXML
     private Button buttonPlusSecurity;
     @FXML
     private Button buttonMinusSecurity;
     @FXML
-    private Button buttonPlusPassport;
+    private Button buttonPlusTicketSells;
     @FXML
-    private Button buttonPlusDutyFree;
+    private Button buttonMinusTicketSells;
     @FXML
-    private Button buttonMinusDutyFree;
+    private Button buttonPlusCheck;
     @FXML
-    private Button buttonMinusPassport;
+    private Button buttonMinusCheck;
     @FXML
-    private ImageView counter1;
+    private Button buttonPlusCateringService;
+    @FXML
+    private Button buttonMinusCateringService;
     @FXML
     private ImageView security1;
     @FXML
@@ -74,13 +72,33 @@ public class Controller implements IControllerForM, IControllerForV {
     @FXML
     private ImageView security5;
     @FXML
-    private ImageView security6;
+    ImageView ticket1;
     @FXML
-    private ImageView counter2;
+    ImageView ticket2;
     @FXML
-    private ImageView counter3;
+    ImageView ticket3;
     @FXML
-    private ImageView counter4;
+    ImageView ticket4;
+    @FXML
+    private ImageView checkin1;
+    @FXML
+    private ImageView checkin2;
+    @FXML
+    private ImageView checkin3;
+    @FXML
+    private ImageView checkin4;
+    @FXML
+    private ImageView checkin5;
+    @FXML
+    ImageView cashier1;
+    @FXML
+    ImageView cashier2;
+    @FXML
+    ImageView cashier3;
+    @FXML
+    ImageView cashier4;
+
+
     @FXML
     MenuButton Selection;
     @FXML
@@ -99,25 +117,7 @@ public class Controller implements IControllerForM, IControllerForV {
     AnchorPane checkinContent;
     @FXML
     AnchorPane ContentPassport;
-    @FXML
-    ImageView cashier1;
-    @FXML
-    ImageView cashier2;
-    @FXML
-    ImageView cashier3;
-    @FXML
-    ImageView cashier4;
 
-    @FXML
-    ImageView control1;
-    @FXML
-    ImageView control2;
-    @FXML
-    ImageView control3;
-    @FXML
-    ImageView control4;
-    @FXML
-    ImageView control5;
     @FXML
     MenuItem startButton;
 
@@ -138,23 +138,23 @@ public class Controller implements IControllerForM, IControllerForV {
         buttonMinusSecurity.setOnAction(e -> {
             if (securityTimes == 1) {
                 security1.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + securityTimes);
+                System.out.println("Security minus button pressed " + securityTimes);
                 securityTimes = 1;
             } else if (securityTimes == 2) {
                 security2.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + securityTimes);
+                System.out.println("Security  minus button pressed " + securityTimes);
                 securityTimes = 2;
             } else if (securityTimes == 3) {
                 security3.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + securityTimes);
+                System.out.println("Security  minus button pressed " + securityTimes);
                 securityTimes = 3;
             } else if (securityTimes == 4) {
                 security4.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + securityTimes);
+                System.out.println("Security  minus button pressed " + securityTimes);
                 securityTimes = 4;
             } else if (securityTimes == 5) {
                 security5.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + securityTimes);
+                System.out.println("Security  minus button pressed " + securityTimes);
                 securityTimes = 5;
             }
             if (securityTimes > 0) {
@@ -168,23 +168,23 @@ public class Controller implements IControllerForM, IControllerForV {
         buttonPlusSecurity.setOnAction(e -> {
             if (securityTimes == 5) {
                 security5.setVisible(true);
-                System.out.println("Check-IN plus button pressed" + securityTimes);
+                System.out.println("Security  plus button pressed " + securityTimes);
                 securityTimes = 5;
             } else if (securityTimes == 4) {
                 security4.setVisible(true);
-                System.out.println("Check-IN plus button pressed" + securityTimes);
+                System.out.println("Security  plus button pressed " + securityTimes);
                 securityTimes = 4;
             } else if (securityTimes == 3) {
                 security3.setVisible(true);
-                System.out.println("Check-IN plus button pressed" + securityTimes);
+                System.out.println("Security  plus button pressed " + securityTimes);
                 securityTimes = 3;
             } else if (securityTimes == 2) {
                 security2.setVisible(true);
-                System.out.println("Check-IN plus button pressed" + securityTimes);
+                System.out.println("Security  plus button pressed "  + securityTimes);
                 securityTimes = 2;
             } else if (securityTimes == 1) {
                 security1.setVisible(true);
-                System.out.println("Check-IN plus button pressed" + securityTimes);
+                System.out.println("Security  plus button pressed " + securityTimes);
                 securityTimes = 1;
             }
             if (securityTimes < 5) {
@@ -192,24 +192,24 @@ public class Controller implements IControllerForM, IControllerForV {
             }
         });
     }
-
-    public synchronized void buttonMinusDuty() {
-        buttonMinusDutyFree.setOnAction(e -> {
+    @FXML
+    public synchronized void buttonMinusCatering() {
+        buttonMinusCateringService.setOnAction(e -> {
             if (cateringTimes == 1) {
                 cashier1.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + cateringTimes);
+                System.out.println("Catering minus button pressed " + cateringTimes);
                 cateringTimes = 1;
             } else if (cateringTimes == 2) {
                 cashier2.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + cateringTimes);
+                System.out.println("Catering minus button pressed " + cateringTimes);
                 cateringTimes = 2;
             } else if (cateringTimes == 3) {
                 cashier3.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + cateringTimes);
+                System.out.println("Catering minus button pressed " + cateringTimes);
                 cateringTimes = 3;
             } else if (cateringTimes == 4) {
                 cashier4.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + cateringTimes);
+                System.out.println("Catering minus button pressed " + cateringTimes);
                 cateringTimes = 4;
             }
             if (cateringTimes > 0) {
@@ -217,43 +217,59 @@ public class Controller implements IControllerForM, IControllerForV {
             }
         });
     }
-
     @FXML
-    public synchronized void buttonPlusDuty() {
-        buttonPlusDutyFree.setOnAction(e -> {
-            if (ticketTimes == 0) {
-                cashier1.setVisible(true);
-                System.out.println("Duty plus button pressed" + ticketTimes);
-            } else if (ticketTimes == 1) {
-                cashier2.setVisible(true);
-                System.out.println("Duty plus button pressed" + ticketTimes);
-            } else if (ticketTimes == 2) {
+    public synchronized void buttonPlusCatering() {
+        buttonPlusCateringService.setOnAction(e -> {
+            if (cateringTimes == 4) {
+                cashier4.setVisible(true);
+                System.out.println("Catering plus button pressed " + cateringTimes);
+                cateringTimes = 4;
+            } else if (cateringTimes == 3) {
                 cashier3.setVisible(true);
-                System.out.println("Duty plus button pressed" + ticketTimes);
-            } else if (ticketTimes < 0) {
-                ticketTimes = 0;
+                System.out.println("Catering plus button pressed " + cateringTimes);
+                cateringTimes = 3;
+            } else if (cateringTimes == 2) {
+                cashier2.setVisible(true);
+                System.out.println("Catering plus button pressed " + cateringTimes);
+                cateringTimes =2;
+            } else if (cateringTimes == 1) {
+                cashier1.setVisible(true);
+                System.out.println("Catering plus button pressed " + cateringTimes);
+                cateringTimes = 1;
             }
-            ticketTimes--;
+            if (cateringTimes < 5) {
+                cateringTimes++;
+            }
         });
     }
 
+
+
     @FXML
     public synchronized void ButtonMinusCheckIn() {
-        buttonMinus.setOnAction(e -> {
+        buttonMinusCheck.setOnAction(e -> {
             if (checkinTimes == 1) {
-                counter4.setVisible(false);
+                checkin1.setVisible(false);
+                System.out.println("Check-IN minus button pressed" + checkinTimes);
                 checkinTimes = 1;
             } else if (checkinTimes == 2) {
-                counter3.setVisible(false);
+                checkin2.setVisible(false);
+                System.out.println("Check-IN minus button pressed" + checkinTimes);
                 checkinTimes = 2;
             } else if (checkinTimes == 3) {
-                counter2.setVisible(false);
+                checkin3.setVisible(false);
+                System.out.println("Check-IN minus button pressed" + checkinTimes);
                 checkinTimes = 3;
             } else if (checkinTimes == 4) {
-                counter1.setVisible(false);
-                checkinTimes = 4;
+                checkin4.setVisible(false);
                 System.out.println("Check-IN minus button pressed" + checkinTimes);
-            } if (checkinTimes > 0) {
+                checkinTimes = 4;
+            } else if (checkinTimes == 5) {
+                checkin5.setVisible(false);
+                System.out.println("Check-IN minus button pressed" + checkinTimes);
+                checkinTimes = 5;
+            }
+            if (checkinTimes > 0) {
                 checkinTimes--;
             }
         });
@@ -261,77 +277,95 @@ public class Controller implements IControllerForM, IControllerForV {
 
     @FXML
     public synchronized void ButtonPlusCheckIn() {
-        buttonPlus.setOnAction(e -> {
+        buttonPlusCheck.setOnAction(e -> {
             if (checkinTimes == 1) {
-                counter4.setVisible(true);
+                checkin1.setVisible(true);
                 checkinTimes = 1;
+                System.out.println("Check-IN plus button pressed" + checkinTimes);
             } else if (checkinTimes == 2) {
-                counter3.setVisible(true);
+                checkin2.setVisible(true);
                 checkinTimes = 2;
+                System.out.println("Check-IN plus button pressed" + checkinTimes);
             } else if (checkinTimes == 3) {
-                counter2.setVisible(true);
+                checkin3.setVisible(true);
                 checkinTimes = 3;
+                System.out.println("Check-IN plus button pressed" + checkinTimes);
             } else if (checkinTimes == 4) {
-                counter1.setVisible(true);
+                checkin4.setVisible(true);
                 checkinTimes = 4;
                 System.out.println("Check-IN plus button pressed" + checkinTimes);
-            } if (securityTimes < 5) {
-                securityTimes++;
+            } else if (checkinTimes == 5) {
+                checkin5.setVisible(true);
+                checkinTimes = 5;
+                System.out.println("Check-IN plus button pressed" + checkinTimes);
+            }
+            if (checkinTimes < 5) {
+                checkinTimes++;
             }
         });
     }
 
     @FXML
-    public synchronized void ButtonMinusPassport() {
-        buttonMinusPassport.setOnAction(e -> {
-            if (cateringTimes == 1) {
-                control5.setVisible(false);
-                cateringTimes = 1;
-            } else if (cateringTimes == 2) {
-                control4.setVisible(false);
-                cateringTimes = 2;
-            } else if (cateringTimes == 3) {
-                control3.setVisible(false);
-                cateringTimes = 3;
-            } else if (cateringTimes == 4) {
-                control2.setVisible(false);
-                cateringTimes = 4;
-            } else if (cateringTimes == 5) {
-                control1.setVisible(false);
-                cateringTimes = 5;
-            } if (cateringTimes > 0) {
-                cateringTimes--;
+    public synchronized void ButtonMinusTicket() {
+        buttonMinusTicketSells.setOnAction(e -> {
+            if (ticketTimes == 1) {
+                ticket1.setVisible(false);
+                ticketTimes = 1;
+                System.out.println("Ticket Sells minus button pressed" + ticketTimes);
+
+            } else if (ticketTimes == 2) {
+                ticket2.setVisible(false);
+                ticketTimes = 2;
+                System.out.println("Ticket Sells minus button pressed" + ticketTimes);
+
+            } else if (ticketTimes == 3) {
+                ticket3.setVisible(false);
+                ticketTimes = 3;
+                System.out.println("Ticket Sells minus button pressed" + ticketTimes);
+
+            } else if (ticketTimes == 4) {
+                ticket4.setVisible(false);
+                ticketTimes = 4;
+                System.out.println("Ticket Sells minus button pressed" + ticketTimes);
+
+            } if (ticketTimes > 0) {
+                ticketTimes--;
             }
         });
     }
 
     @FXML
-    public synchronized void ButtonPlusPassport() {
-        buttonPlusPassport.setOnAction(e -> {
-            if (cateringTimes == 1) {
-                control5.setVisible(true);
-                cateringTimes = 1;
-            } else if (cateringTimes == 2) {
-                control4.setVisible(true);
-                cateringTimes = 2;
-            } else if (cateringTimes == 3) {
-                control3.setVisible(true);
-                cateringTimes = 3;
-            } else if (cateringTimes == 4) {
-                control2.setVisible(true);
-                cateringTimes = 4;
-            } else if (cateringTimes == 5) {
-                control1.setVisible(true);
-                cateringTimes = 5;
-            } if (cateringTimes < 5) {
-                cateringTimes++;
+    public synchronized void ButtonPlusTicket() {
+        buttonPlusTicketSells.setOnAction(e -> {
+            if (ticketTimes == 1) {
+                ticket1.setVisible(true);
+                ticketTimes = 1;
+                System.out.println("Ticket Sells plus button pressed" + ticketTimes);
+
+            } else if (ticketTimes == 2) {
+                ticket2.setVisible(true);
+                ticketTimes = 2;
+                System.out.println("Ticket Sells plus button pressed" + ticketTimes);
+
+            } else if (ticketTimes == 3) {
+                ticket3.setVisible(true);
+                ticketTimes = 3;
+                System.out.println("Ticket Sells plus button pressed" + ticketTimes);
+
+            } else if (ticketTimes == 4) {
+                ticket4.setVisible(true);
+                ticketTimes = 4;
+                System.out.println("Ticket Sells plus button pressed" + ticketTimes);
+
+            } if (ticketTimes < 5) {
+                ticketTimes++;
             }
         });
     }
 
     @FXML
-    public void buttonHidasta() {
-        buttonHidasta.setOnAction(new EventHandler<ActionEvent>() {
+    public void buttonSlower() {
+        buttonSlower.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 slower();
@@ -340,8 +374,8 @@ public class Controller implements IControllerForM, IControllerForV {
 
     }
     @FXML
-    public void buttonNopeuta() {
-        buttonNopeuta.setOnAction(new EventHandler<ActionEvent>() {
+    public void buttonFaster() {
+        buttonFaster.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 faster();
@@ -349,16 +383,21 @@ public class Controller implements IControllerForM, IControllerForV {
         });
     }
 
+    public ServicePoint[] getservicePoints() {
+        return ((MyEngine) engine).getservicePoints();
+    }
+
     @FXML
-    private void aloita(ActionEvent event) {
+    private void start(ActionEvent event) {
         Clock.getInstance().setClock(0);
         engine = new MyEngine(this);
         engine.setSimulationTime(Integer.parseInt(textFieldAika.getText()));
         engine.setDelay(Integer.parseInt(textFieldViive.getText()));
-        engine.setSettings(new int[]{checkinTimes, securityTimes, cateringTimes});
+        engine.setSettings(new int[]{securityTimes, ticketTimes, checkinTimes, cateringTimes});
         System.out.println(engine.getSettings()[0]);
         System.out.println(engine.getSettings()[1]);
         System.out.println(engine.getSettings()[2]);
+        System.out.println(engine.getSettings()[3]);
         ((Thread) engine).start();
         Trace.setTraceLevel(Trace.Level.INFO);
         Thread thread = new Thread(new Runnable() {
@@ -396,7 +435,7 @@ public class Controller implements IControllerForM, IControllerForV {
 
 
     @Override
-    public void showtotaltime(double aika) {
+    public void showtotaltime(double time) {
     }
 
 
@@ -415,3 +454,4 @@ public class Controller implements IControllerForM, IControllerForV {
         engine.setDelay((long) (engine.getDelay() * 1.10));
     }
 }
+
