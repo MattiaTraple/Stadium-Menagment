@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControllerResult">
    <children>
       <MenuBar fx:id="MenuBar" prefHeight="28.0" prefWidth="686.0">
          <menus>
@@ -56,7 +56,7 @@
                                                 <Insets left="20.0" />
                                              </HBox.margin>
                                           </Label>
-                                          <Label fx:id="dataCustomers" prefHeight="36.0" prefWidth="116.0" text="DATA" />
+                                          <Label fx:id="dataVipCustomers" prefHeight="36.0" prefWidth="116.0" text="DATA" />
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="43.0" prefWidth="264.0">
@@ -68,7 +68,7 @@
                                                       <Insets left="20.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label fx:id="dataSimulationTime1" prefHeight="36.0" prefWidth="116.0" text="DATA" />
+                                                <Label fx:id="dataCustomers" prefHeight="36.0" prefWidth="116.0" text="DATA" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -152,7 +152,15 @@
                                                 <Insets bottom="10.0" />
                                              </VBox.margin>
                                           </Text>
-                                          <Text fx:id="Q3" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                          <Text fx:id="Q3" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="Q4" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" wrappingWidth="128.94189453125">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>

@@ -36,9 +36,9 @@ public class Controller implements IControllerForM, IControllerForV {
     private IControllerForV controller;
 
     @FXML
-    private TextField textFieldAika;
+    private TextField textFieldTime;
     @FXML
-    private TextField textFieldViive;
+    private TextField textFieldDelay;
     @FXML
     private Button buttonFaster;
     @FXML
@@ -391,8 +391,8 @@ public class Controller implements IControllerForM, IControllerForV {
     private void start(ActionEvent event) {
         Clock.getInstance().setClock(0);
         engine = new MyEngine(this);
-        engine.setSimulationTime(Double.parseDouble(textFieldAika.getText()));
-        engine.setDelay(Integer.parseInt(textFieldViive.getText()));
+        engine.setSimulationTime(Double.parseDouble(textFieldTime.getText()));
+        engine.setDelay(Integer.parseInt(textFieldDelay.getText()));
         engine.setSettings(new int[]{securityTimes, ticketTimes, checkinTimes, cateringTimes});
         System.out.println(engine.getSettings()[0]);
         System.out.println(engine.getSettings()[1]);
@@ -414,7 +414,6 @@ public class Controller implements IControllerForM, IControllerForV {
             }
         });
         thread.start();
-
     }
 
 
