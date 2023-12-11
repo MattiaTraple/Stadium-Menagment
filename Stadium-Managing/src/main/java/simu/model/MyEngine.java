@@ -22,19 +22,6 @@ import java.util.Date;
 
 public class MyEngine extends Engine {
 
-    private ResultDb resultDb;
-    private CustomerDao customerDao;
-
-    // Constructor, getters, setters, and other methods...
-
-    public ResultDb getResultDb() {
-        return resultDb;
-    }
-
-    public CustomerDao getCustomerDao() {
-        return customerDao;
-    }
-
     private ArrivalProcess arrivalProcess;
 
     private ResultDao ResultDao;
