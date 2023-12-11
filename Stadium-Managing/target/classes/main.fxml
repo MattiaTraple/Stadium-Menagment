@@ -61,7 +61,7 @@
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="startButton" mnemonicParsing="false" onAction="#aloita" text="Start" />
+                  <MenuItem fx:id="startButton" mnemonicParsing="false" onAction="#start" text="Start" />
                   <MenuItem fx:id="results" mnemonicParsing="false" text="Results" onAction="#results"/>
                </items>
             </Menu>
@@ -105,8 +105,8 @@
                         <HBox fx:id="HBox3" prefHeight="34.0" prefWidth="159.0">
                            <children>
                               <Separator fx:id="seperator" opacity="0.0" orientation="VERTICAL" prefHeight="34.0" prefWidth="64.0" />
-                              <Button fx:id="buttonNopeuta" alignment="CENTER" mnemonicParsing="false" onAction="#buttonNopeuta" text="Fater" />
-                              <Button fx:id="buttonHidasta" alignment="CENTER" mnemonicParsing="false" onAction="#buttonHidasta" text="Slower" textAlignment="CENTER">
+                              <Button fx:id="buttonFaster" alignment="CENTER" mnemonicParsing="false" onAction="#buttonFaster" text="Faster" />
+                              <Button fx:id="buttonSlower" alignment="CENTER" mnemonicParsing="false" onAction="#buttonSlower" text="Slower" textAlignment="CENTER">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>

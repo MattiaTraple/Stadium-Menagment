@@ -39,7 +39,7 @@ public class MyEngine extends Engine {
 
         super(controller);
 
-        servicePoints = new ServicePoint[21];
+        servicePoints = new ServicePoint[20];
 
         servicePoints[0]=new Security(new Normal(10,6), eventList, EventType.SECURITY1, 321, 392);
         servicePoints[1]=new Security(new Normal(10,6), eventList, EventType.SECURITY2, 265, 423);

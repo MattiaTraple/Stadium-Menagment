@@ -391,7 +391,7 @@ public class Controller implements IControllerForM, IControllerForV {
     private void start(ActionEvent event) {
         Clock.getInstance().setClock(0);
         engine = new MyEngine(this);
-        engine.setSimulationTime(Integer.parseInt(textFieldAika.getText()));
+        engine.setSimulationTime(Double.parseDouble(textFieldAika.getText()));
         engine.setDelay(Integer.parseInt(textFieldViive.getText()));
         engine.setSettings(new int[]{securityTimes, ticketTimes, checkinTimes, cateringTimes});
         System.out.println(engine.getSettings()[0]);
