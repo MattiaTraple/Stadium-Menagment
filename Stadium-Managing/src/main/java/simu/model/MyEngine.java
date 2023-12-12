@@ -55,12 +55,13 @@ public class MyEngine extends Engine {
         servicePoints[10]=new CheckIn(new Normal(10,6), eventList, EventType.CHECK_IN2, 324, 517);
         servicePoints[11]=new CheckIn(new Normal(10,6), eventList, EventType.CHECK_IN3, 342, 505);
         servicePoints[12]=new CheckIn(new Normal(10,6), eventList, EventType.CHECK_IN4, 387, 481);
-        servicePoints[13]=new CheckIn(new Normal(10,6), eventList, EventType.CHECK_IN5, 387 , 481);
+        servicePoints[13]=new CheckIn(new Normal(10,6), eventList, EventType.CHECK_IN5, 387, 501);
 
         servicePoints[14]=new Catering(new Normal(10,6), eventList, EventType.CATERING1, 321, 250);
         servicePoints[15]=new Catering(new Normal(10,6), eventList, EventType.CATERING2, 201, 389);
         servicePoints[16]=new Catering(new Normal(10,6), eventList, EventType.CATERING3, 166, 404);
         servicePoints[17]=new Catering(new Normal(10,6), eventList, EventType.CATERING4, 134, 422);
+
 
         servicePoints[18]=new NormalCustomer(new Normal(10,6), eventList, EventType.CUSTOMER_ARRIVAL, 257, 157);
         servicePoints[19]=new VipCustomer(new Normal(10,6), eventList, EventType.VIP_CUSTOMER_ARRIVAL, 51, 359);
@@ -374,11 +375,10 @@ public class MyEngine extends Engine {
                 break;
 
             case CHECK_IN5:
-                a = (Customer) servicePoints[13].TakeFromTheLine(); //Customer moves from checkin to catering
+                a = (Customer) servicePoints[13].TakeFromTheLine(); // Customer moves from checkin to catering
                 linecheck = true;
                 j=0;
                 while (linecheck) {
-
                     for (int i = 10; i < (10+settings[3]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
                             servicePoints[i].AddToTheLine(a);
@@ -390,36 +390,72 @@ public class MyEngine extends Engine {
                     j++;
                 }
                 break;
+
             case CATERING1:
                 a = (Customer) servicePoints[14].TakeFromTheLine();
-                if (!a.isVipCustomer()) {
-                    servicePoints[18].AddToTheLine(a);
-                } else {
-                    servicePoints[19].AddToTheLine(a);
+                linecheck = true;
+                j=0;
+                while (linecheck) {
+                    for (int i = 5; i < (5+settings[4]); i++) {
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
+                            System.out.println("Customer added to Catering 1 number" + i);
+                            linecheck = false;
+                            break;
+                        }
+                    }
+                    j++;
                 }
                 break;
+
             case CATERING2:
                 a = (Customer) servicePoints[15].TakeFromTheLine();
-                if (!a.isVipCustomer()) {
-                    servicePoints[18].AddToTheLine(a);
-                } else {
-                    servicePoints[19].AddToTheLine(a);
+                linecheck = true;
+                j=0;
+                while (linecheck) {
+                    for (int i = 5; i < (5+settings[4]); i++) {
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
+                            System.out.println("Customer added to Catering 2 number" + i);
+                            linecheck = false;
+                            break;
+                        }
+                    }
+                    j++;
                 }
                 break;
+
             case CATERING3:
                 a = (Customer) servicePoints[16].TakeFromTheLine();
-                if (!a.isVipCustomer()) {
-                    servicePoints[18].AddToTheLine(a);
-                } else {
-                    servicePoints[19].AddToTheLine(a);
+                linecheck = true;
+                j=0;
+                while (linecheck) {
+                    for (int i = 5; i < (5+settings[4]); i++) {
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
+                            System.out.println("Customer added to Catering 3 number" + i);
+                            linecheck = false;
+                            break;
+                        }
+                    }
+                    j++;
                 }
                 break;
+
             case CATERING4:
                 a = (Customer) servicePoints[17].TakeFromTheLine();
-                if (!a.isVipCustomer()) {
-                    servicePoints[18].AddToTheLine(a);
-                } else {
-                    servicePoints[19].AddToTheLine(a);
+                linecheck = true;
+                j=0;
+                while (linecheck) {
+                    for (int i = 10; i < (10+settings[4]); i++) {
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
+                            System.out.println("Customer added to Catering 4 number" + i);
+                            linecheck = false;
+                            break;
+                        }
+                    }
+                    j++;
                 }
                 break;
 
@@ -429,7 +465,7 @@ public class MyEngine extends Engine {
                 e = new CustomerDb(a, this.ResultDb.getId());
                 CustomerDao.persist(e);
                 a.raport();
-                System.out.println("Customer arrived and added to the database");
+                System.out.println("VIP Customer arrived and added to the database");
                 break;
 
             case CUSTOMER_ARRIVAL:
