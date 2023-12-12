@@ -23,7 +23,7 @@ public class Customer {
         id = i++;
         arrivetime = Clock.getInstance().getClock();
         Trace.out(Trace.Level.INFO, "New Customer:" + id + ":" + arrivetime);
-        vipcustomer = true;
+        vipcustomer = false;
     }
 
     public boolean isTicket() {
