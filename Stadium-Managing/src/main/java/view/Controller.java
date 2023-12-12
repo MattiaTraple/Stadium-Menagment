@@ -2,30 +2,23 @@ package view;
 
 import controller.IControllerForM;
 import controller.IControllerForV;
-import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import javafx.util.Duration;
 import simu.framework.IEngine;
 import simu.framework.Clock;
 import simu.framework.Trace;
 import simu.model.Customer;
 import simu.model.MyEngine;
 import simu.model.ServicePoint;
-import java.awt.*;
+
 import javafx.scene.canvas.Canvas;
 
 
@@ -43,8 +36,6 @@ public class Controller implements IControllerForM, IControllerForV {
     private Button buttonFaster;
     @FXML
     private Button buttonSlower;
-    @FXML
-    private Button buttonKaynnista;
     @FXML
     private Button buttonPlusSecurity;
     @FXML
@@ -97,26 +88,6 @@ public class Controller implements IControllerForM, IControllerForV {
     ImageView cashier3;
     @FXML
     ImageView cashier4;
-
-
-    @FXML
-    MenuButton Selection;
-    @FXML
-    MenuItem CheckINSelection;
-    @FXML
-    MenuItem SecuritySelection;
-    @FXML
-    MenuItem PassportSelection;
-    @FXML
-    MenuItem DutySelection;
-    @FXML
-    AnchorPane ContentSecurity;
-    @FXML
-    AnchorPane ContentDuty;
-    @FXML
-    AnchorPane checkinContent;
-    @FXML
-    AnchorPane ContentPassport;
 
     @FXML
     MenuItem startButton;

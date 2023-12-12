@@ -6,13 +6,12 @@ import eduni.distributions.Normal;
 import entity.ResultDb;
 import javafx.application.Application;
 import simu.framework.Clock;
-import simu.framework.IEngine;
 import simu.framework.Engine;
 import simu.framework.ArrivalProcess;
 import simu.framework.Event;
 import dao.*;
 import entity.*;
-import view.IController;
+import view.SimulatorGUI;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -67,7 +66,6 @@ public class MyEngine extends Engine {
         servicePoints[19]=new VipCustomer(new Normal(10,6), eventList, EventType.VIP_CUSTOMER_ARRIVAL, 51, 359);
 
         arrivalProcess = new ArrivalProcess(new Negexp(15,5), eventList, EventType.ARR1);
-
     }
 
     public void setSettings(int[] settings) {
@@ -89,8 +87,9 @@ public class MyEngine extends Engine {
         arrivalProcess.generateNextEvent(); // First arrival to Simulation
         ResultDao = new ResultDao();
         Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String strDate = dateFormat.format(date);
+        System.out.println("The Date works");
         ResultDb = new ResultDb(settings, strDate);
         ResultDao.persist(ResultDb);
         CustomerDao = new CustomerDao();
@@ -426,32 +425,27 @@ public class MyEngine extends Engine {
                 break;
 
             case CUSTOMER_ARRIVAL:
-                a = (Customer) servicePoints[18].TakeFromTheLine(); // Customer Removed from Simulator
+                a = (Customer) servicePoints[18].TakeFromTheLine();
                 a.setFinistime(Clock.getInstance().getClock());
                 e = new CustomerDb(a, this.ResultDb.getId());
                 CustomerDao.persist(e);
-
-                // Update ResultDb based on regular customer
                 ResultDb.setTotalTime(a.raport());
-                ResultDb.setCustomers(ResultDb.getCustomers() + 1); // Increment total customers count
+                ResultDb.setCustomers(ResultDb.getCustomers() + 1);
                 ResultDao.update(ResultDb);
-
                 a.raport();
+                System.out.println("Customer arrived and added to the database");
                 break;
 
             case VIP_CUSTOMER_ARRIVAL:
-                a = (Customer) servicePoints[19].TakeFromTheLine(); // Customer Removed from Simulator
-                a.setFinistime(Clock.getInstance().getClock());
+                a = (Customer) servicePoints[19].TakeFromTheLine();
                 e = new CustomerDb(a, this.ResultDb.getId());
                 CustomerDao.persist(e);
-
-                // Update ResultDb based on VIP customer
-                ResultDb.setTotalTime(a.raport());
-                ResultDb.setVip_customers(ResultDb.getVip_customers() + 1); // Increment VIP customers count
+                ResultDb.setVip_customers(ResultDb.getVip_customers() + 1);
                 ResultDao.update(ResultDb);
-
                 a.raport();
+                System.out.println("VIP Customer arrived and added to the database");
                 break;
+
         }
     }
 
@@ -475,5 +469,8 @@ public class MyEngine extends Engine {
         System.out.println("Number of the customers " + Customer.getCount());
 
         controller.showtotaltime(Clock.getInstance().getClock());
+    }
+    public static void main(String[] args) {
+        Application.launch(SimulatorGUI.class);
     }
 }

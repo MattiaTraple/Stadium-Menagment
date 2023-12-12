@@ -16,7 +16,7 @@ public class ResultDb {
     private String date;
 
     @Column(name = "totaltime")
-    private int totaltime;
+    private long totaltime;
 
     @Column(name = "customers")
     private int customers;
@@ -68,14 +68,13 @@ public class ResultDb {
         this.date = date;
     }
 
-    public int getTotalTime() {
+    public long getTotalTime() {
         return totaltime;
     }
 
-    public void setTotalTime(int totaltime) {
+    public void setTotalTime(long totaltime) {
         this.totaltime = totaltime;
     }
-
     public int getCustomers() {
         return customers;
     }

@@ -54,7 +54,7 @@ public class Customer {
         return arrivetime;
     }
 
-    public void setArrivetime(int arrivetime) {
+    public void setArrivetime(double arrivetime) {
         this.arrivetime = arrivetime;
     }
 
