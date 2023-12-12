@@ -4,10 +4,7 @@ import simu.framework.Clock;
 import simu.framework.Trace;
 import view.Controller;
 
-
-// TODO:
 public class Customer {
-    private static int index = 1;
     private ServicePoint p;
     private Controller controller = new Controller();
     private double arrivetime;
@@ -15,23 +12,22 @@ public class Customer {
     private int id;
     private static int i = 1;
     private static long sum = 0;
-    public boolean ticket = true;
-
-    public boolean vipcustomer;
+    private boolean ticket = true;
+    private boolean normalcustomer;
 
     public Customer() {
         id = i++;
         arrivetime = Clock.getInstance().getClock();
-        Trace.out(Trace.Level.INFO, "New Customer:" + id + ":" + arrivetime);
-        vipcustomer = false;
+        Trace.out(Trace.Level.INFO, "New Customer:" + id + ":" + arrivetime );
+        normalcustomer = true;
     }
 
     public boolean isTicket() {
         return ticket;
     }
 
-    public boolean isVipCustomer() {
-        return vipcustomer;
+    public boolean isNormalCustomer() {
+        return normalcustomer;
     }
 
     public static int getCount() {
@@ -58,7 +54,6 @@ public class Customer {
         this.arrivetime = arrivetime;
     }
 
-
     public double raport() {
         Trace.out(Trace.Level.INFO, "Customer " + id + " arrived:" + arrivetime);
         Trace.out(Trace.Level.INFO, "Customer " + id + " finished:" + finistime);
@@ -68,5 +63,4 @@ public class Customer {
         System.out.println("Average " + average);
         return average;
     }
-
 }
