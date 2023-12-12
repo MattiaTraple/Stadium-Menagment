@@ -3,6 +3,9 @@ package entity;
 import jakarta.persistence.*;
 import simu.model.*;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 @Entity
 @Table(name = "result")
 public class ResultDb {
@@ -16,7 +19,10 @@ public class ResultDb {
     private String date;
 
     @Column(name = "totaltime")
-    private long totaltime;
+    private double totaltime;
+
+    @Column(name = "avgtime")
+    private double avgtime;
 
     @Column(name = "customers")
     private int customers;
@@ -40,6 +46,7 @@ public class ResultDb {
         super();
         this.date = date;
         this.totaltime = 0;
+        this.avgtime = 0;
         this.vip_customers = 0;
         this.customers = 0;
         this.checkin = settings[2];
@@ -68,12 +75,22 @@ public class ResultDb {
         this.date = date;
     }
 
-    public long getTotalTime() {
+    public double getTotalTime() {
         return totaltime;
     }
 
-    public void setTotalTime(long totaltime) {
-        this.totaltime = totaltime;
+    public void setTotalTime(double totaltime) {
+        double scale = Math.pow(10, 2);
+        double formattedNumber = Math.round(totaltime * scale) / scale;
+        this.totaltime = formattedNumber;
+    }
+
+    public double getAvgtime() {
+        return avgtime;
+    }
+
+    public void setAvgtime(double avgtime) {
+        this.avgtime = avgtime;
     }
     public int getCustomers() {
         return customers;

@@ -16,7 +16,7 @@ public class Clock {
         this.clock = clock;
     }
 
-    public int getClock() {
-        return (int) clock;
+    public double getClock() {
+        return clock;
     }
 }

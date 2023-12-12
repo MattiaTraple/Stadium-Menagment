@@ -102,7 +102,6 @@ public class MyEngine extends Engine {
         boolean linecheck;
         int j;
         switch ((EventType) t.getType()) {
-
             case ARR1:
                 linecheck = true;
                 j=0;
@@ -111,7 +110,7 @@ public class MyEngine extends Engine {
                     for (int i = 0; i < settings[0]; i++) {
                         if (servicePoints[i].GetLineSize() == j) {
                             servicePoints[i].AddToTheLine(new Customer());
-                            System.out.println("Customer Added to line" + i);
+                            System.out.println("Customer Added to line " + i);
                             linecheck = false;
                             break;
                         }
@@ -130,7 +129,7 @@ public class MyEngine extends Engine {
                     for (int i = 5; i < (5+settings[1]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
                             servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer Added to Security number" + i);
+                            System.out.println("Customer Added to Security 1 number" + i);
                             linecheck = false;
                             break;
                         }
@@ -150,7 +149,7 @@ public class MyEngine extends Engine {
                         for (int i = 5; i < (5+settings[1]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
                                 servicePoints[i].AddToTheLine(a);
-                                System.out.println("Customer Added to Security number" + i);
+                                System.out.println("Customer Added to Security 2 number" + i);
                                 linecheck = false;
                                 break;
                             }
@@ -170,7 +169,7 @@ public class MyEngine extends Engine {
                         for (int i = 5; i < (5+settings[1]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
                                 servicePoints[i].AddToTheLine(a);
-                                System.out.println("Customer Added to Security number" + i);
+                                System.out.println("Customer Added to Security 3 number" + i);
                                 linecheck = false;
                                 break;
                             }
@@ -190,7 +189,7 @@ public class MyEngine extends Engine {
                         for (int i = 5; i < (5+settings[1]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
                                 servicePoints[i].AddToTheLine(a);
-                                System.out.println("Customer Added to Security number" + i);
+                                System.out.println("Customer Added to Security 4 number" + i);
                                 linecheck = false;
                                 break;
                             }
@@ -210,7 +209,7 @@ public class MyEngine extends Engine {
                         for (int i = 5; i < (5+settings[1]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
                                 servicePoints[i].AddToTheLine(a);
-                                System.out.println("Customer Added to Security number" + i);
+                                System.out.println("Customer Added to Security 5 number" + i);
                                 linecheck = false;
                                 break;
                             }
@@ -230,7 +229,7 @@ public class MyEngine extends Engine {
                         for (int i = 10; i < (10+settings[2]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
                                 servicePoints[i].AddToTheLine(a);
-                                System.out.println("Customer added to Ticket Sells number" + i);
+                                System.out.println("Customer added to Ticket Sells 1 number" + i);
                                 linecheck = false;
                                 break;
                             }
@@ -250,7 +249,7 @@ public class MyEngine extends Engine {
                         for (int i = 10; i < (10+settings[2]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
                                 servicePoints[i].AddToTheLine(a);
-                                System.out.println("Customer added to Ticket Sells number" + i);
+                                System.out.println("Customer added to Ticket Sells 2 number" + i);
                                 linecheck = false;
                                 break;
                             }
@@ -271,7 +270,7 @@ public class MyEngine extends Engine {
                         for (int i = 10; i < (10+settings[2]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
                                 servicePoints[i].AddToTheLine(a);
-                                System.out.println("Customer added to Ticket Sells number" + i);
+                                System.out.println("Customer added to Ticket Sells 3 number" + i);
                                 linecheck = false;
                                 break;
                             }
@@ -292,7 +291,7 @@ public class MyEngine extends Engine {
                     for (int i = 10; i < (10+settings[2]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
                             servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer added to Ticket Sells number" + i);
+                            System.out.println("Customer added to Ticket Sells 4 number" + i);
                             linecheck = false;
                             break;
                         }
@@ -312,7 +311,7 @@ public class MyEngine extends Engine {
                         for (int i = 10; i < (10+settings[3]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
                                 servicePoints[i].AddToTheLine(a);
-                                System.out.println("Customer Added to Check In number" + i);
+                                System.out.println("Customer Added to Check In 1 number" + i);
                                 linecheck = false;
                                 break;
                             }
@@ -329,7 +328,7 @@ public class MyEngine extends Engine {
                     for (int i = 10; i < (10+settings[3]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
                             servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer Added to Check In number" + i);
+                            System.out.println("Customer Added to Check In 2 number" + i);
                             linecheck = false;
                             break;
                         }
@@ -347,7 +346,7 @@ public class MyEngine extends Engine {
                     for (int i = 10; i < (10+settings[3]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
                             servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer Added to Check In number" + i);
+                            System.out.println("Customer Added to Check In 3 number" + i);
                             linecheck = false;
                             break;
                         }
@@ -365,7 +364,7 @@ public class MyEngine extends Engine {
                     for (int i = 10; i < (10+settings[3]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
                             servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer Added to Check In number" + i);
+                            System.out.println("Customer Added to Check In 4 number" + i);
                             linecheck = false;
                             break;
                         }
@@ -383,7 +382,7 @@ public class MyEngine extends Engine {
                     for (int i = 10; i < (10+settings[3]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
                             servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer Added to Check In number" + i);
+                            System.out.println("Customer Added to Check In 5 number" + i);
                             linecheck = false;
                             break;
                         }
@@ -424,26 +423,26 @@ public class MyEngine extends Engine {
                 }
                 break;
 
+            case VIP_CUSTOMER_ARRIVAL:
+                a = (Customer) servicePoints[19].TakeFromTheLine();
+                a.setFinistime(Clock.getInstance().getClock());
+                e = new CustomerDb(a, this.ResultDb.getId());
+                CustomerDao.persist(e);
+                a.raport();
+                System.out.println("Customer arrived and added to the database");
+                break;
+
             case CUSTOMER_ARRIVAL:
                 a = (Customer) servicePoints[18].TakeFromTheLine();
                 a.setFinistime(Clock.getInstance().getClock());
                 e = new CustomerDb(a, this.ResultDb.getId());
                 CustomerDao.persist(e);
-                ResultDb.setTotalTime(a.raport());
-                ResultDb.setCustomers(ResultDb.getCustomers() + 1);
+                ResultDb.setAvgtime(a.raport());
+                ResultDb.setCustomers(Customer.getCount());
+                ResultDb.setTotalTime(Clock.getInstance().getClock());
                 ResultDao.update(ResultDb);
                 a.raport();
                 System.out.println("Customer arrived and added to the database");
-                break;
-
-            case VIP_CUSTOMER_ARRIVAL:
-                a = (Customer) servicePoints[19].TakeFromTheLine();
-                e = new CustomerDb(a, this.ResultDb.getId());
-                CustomerDao.persist(e);
-                ResultDb.setVip_customers(ResultDb.getVip_customers() + 1);
-                ResultDao.update(ResultDb);
-                a.raport();
-                System.out.println("VIP Customer arrived and added to the database");
                 break;
 
         }
@@ -467,8 +466,6 @@ public class MyEngine extends Engine {
         System.out.println("Simulation ended at " + Clock.getInstance().getClock());
         System.out.println("Results ... ");
         System.out.println("Number of the customers " + Customer.getCount());
-
-        controller.showtotaltime(Clock.getInstance().getClock());
     }
     public static void main(String[] args) {
         Application.launch(SimulatorGUI.class);

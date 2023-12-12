@@ -15,7 +15,7 @@ public class CustomerDb {
     @Column(name = "id_sim")
     private int id_sim;
     @Column(name = "arrive")
-    private double arrive;
+    private double arrivetime;
     @Column(name = "finish")
     private double finish;
 
@@ -24,7 +24,7 @@ public class CustomerDb {
         super();
         this.id = a.getId();
         this.id_sim = id_sim;
-        this.arrive = a.getArrivetime();
+        this.arrivetime = a.getArrivetime();
         this.finish = a.getFinistime();
     }
 
@@ -57,11 +57,11 @@ public class CustomerDb {
     }
 
     public double getArrivalTime() {
-        return arrive;
+        return arrivetime;
     }
 
-    public void setArrivalTime(double arrive) {
-        this.arrive = arrive;
+    public void setArrivalTime(double arrivetime) {
+        this.arrivetime = arrivetime;
     }
 
     public double getFinishTime() {

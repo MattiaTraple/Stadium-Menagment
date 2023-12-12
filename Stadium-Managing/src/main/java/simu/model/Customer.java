@@ -58,18 +58,15 @@ public class Customer {
         this.arrivetime = arrivetime;
     }
 
-    public int raport() {
-        Trace.out(Trace.Level.INFO, "Customer " + id + " Arrived: " + arrivetime);
-        Trace.out(Trace.Level.INFO, "Customer " + id + " Exits: " + finistime);
 
-        double stayTime = finistime - arrivetime;
-        Trace.out(Trace.Level.INFO, "Customer " + id + " Stayed for: " + stayTime);
-
-        sum += stayTime;
-
-        System.out.println("Customer " + id + " TotalTime: " + stayTime);
-
-        return (int) stayTime;
+    public double raport() {
+        Trace.out(Trace.Level.INFO, "Customer " + id + " arrived:" + arrivetime);
+        Trace.out(Trace.Level.INFO, "Customer " + id + " finished:" + finistime);
+        Trace.out(Trace.Level.INFO, "Customer " + id + " delay:" + (finistime - arrivetime));
+        sum += (finistime - arrivetime);
+        double average = sum / id / 2;
+        System.out.println("Average " + average);
+        return average;
     }
 
 }

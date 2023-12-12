@@ -2,6 +2,7 @@ package view;
 
 import dao.CustomerDao;
 import dao.ResultDao;
+import entity.ResultDb;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -41,15 +42,15 @@ public class ControllerResult {
     @FXML
     public void selector(){
         CustomerDao customerDao = new CustomerDao();
-        ResultDao resultDao = new ResultDao();
+        ResultDb resultDao = new ResultDb();
 
         int id = 0;
-        dataCustomers.setText(String.valueOf(resultDao.find(id).getCustomers()));
-        dataVipCustomers.setText(String.valueOf(resultDao.find(id).getVip_customers()));
-        dataSimulationTime.setText(String.valueOf(resultDao.find(id).getTotalTime()));
-        Q1.setText(String.valueOf(resultDao.find(id).getSecurity()));
-        Q2.setText(String.valueOf(resultDao.find(id).getTicket()));
-        Q3.setText(String.valueOf(resultDao.find(id).getCheckin()));
-        Q4.setText(String.valueOf(resultDao.find(id).getCatering()));
+        dataCustomers.setText(String.valueOf(resultDao.getCustomers()));
+        dataVipCustomers.setText(String.valueOf(resultDao.getVip_customers()));
+        dataSimulationTime.setText(String.valueOf(resultDao.getTotalTime()));
+        Q1.setText(String.valueOf(resultDao.getSecurity()));
+        Q2.setText(String.valueOf(resultDao.getTicket()));
+        Q3.setText(String.valueOf(resultDao.getCheckin()));
+        Q4.setText(String.valueOf(resultDao.getCatering()));
     }
 }
