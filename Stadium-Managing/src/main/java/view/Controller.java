@@ -402,8 +402,6 @@ public class Controller implements IControllerForM, IControllerForV {
         }
     }
 
-
-
     @Override
     public void showtotaltime(double time) {
     }

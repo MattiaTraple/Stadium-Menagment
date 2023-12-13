@@ -1,10 +1,6 @@
 package entity;
 
 import jakarta.persistence.*;
-import simu.model.*;
-
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 @Entity
 @Table(name = "result")

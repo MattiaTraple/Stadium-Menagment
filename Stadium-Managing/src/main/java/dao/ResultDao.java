@@ -35,25 +35,12 @@ public class ResultDao {
         em.getTransaction().commit();
     }
 
-
-    public List<String> getCustomers() {
+    public List<String> getId() {
         try {
             EntityManager em = datasource.MariaDbJpaConnection.getInstance();
-            Query query = em.createQuery("SELECT c.customers FROM ResultDb c");
-            List<String> customers = query.getResultList();
-            return customers;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
-
-    public List<String> getVipCustomers() {
-        try {
-            EntityManager em = datasource.MariaDbJpaConnection.getInstance();
-            Query query = em.createQuery("SELECT c.vip_customers FROM ResultDb c");
-            List<String> vip_customers = query.getResultList();
-            return vip_customers;
+            Query query = em.createQuery("SELECT c.id FROM ResultDb c");
+            List<String> names = query.getResultList();
+            return names;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

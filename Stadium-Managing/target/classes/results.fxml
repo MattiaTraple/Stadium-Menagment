@@ -17,6 +17,7 @@
 <?import javafx.scene.text.Text?>
 
 
+<?import javafx.scene.control.ComboBox?>
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControllerResult">
    <children>
       <MenuBar fx:id="MenuBar" prefHeight="28.0" prefWidth="686.0">
@@ -29,6 +30,7 @@
             </Menu>
          </menus>
       </MenuBar>
+
       <SplitPane fx:id="SplitPane" dividerPositions="0.28452115812917594" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0">
          <items>
             <AnchorPane fx:id="AnchorPane">
@@ -39,6 +41,7 @@
                            <children>
                               <VBox layoutY="50.0" prefHeight="361.0" prefWidth="267.0">
                                  <children>
+                                    <ComboBox fx:id="selection" onAction="#selector" prefHeight="25.0" prefWidth="150.0" visible="false" />
                                     <HBox prefHeight="43.0" prefWidth="264.0">
                                        <children>
                                           <Label prefHeight="36.0" prefWidth="141.0" text="Total simulation time: ">
@@ -46,29 +49,29 @@
                                                 <Insets left="20.0" />
                                              </HBox.margin>
                                           </Label>
-                                          <Label fx:id="dataSimulationTime" prefHeight="36.0" prefWidth="116.0" text="DATA" />
+                                          <Label fx:id="dataSimulationTime" prefHeight="36.0" prefWidth="116.0" text="" />
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="43.0" prefWidth="264.0">
                                        <children>
-                                          <Label prefHeight="36.0" prefWidth="141.0" text="Vip Customers:">
+                                          <Label prefHeight="36.0" prefWidth="141.0" text="Average Time:">
                                              <HBox.margin>
                                                 <Insets left="20.0" />
                                              </HBox.margin>
                                           </Label>
-                                          <Label fx:id="dataVipCustomers" prefHeight="36.0" prefWidth="116.0" text="DATA" />
+                                          <Label fx:id="dataAvgTime" prefHeight="36.0" prefWidth="116.0" text="" />
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="43.0" prefWidth="264.0">
                                        <children>
                                           <HBox prefHeight="43.0" prefWidth="264.0">
                                              <children>
-                                                <Label prefHeight="36.0" prefWidth="141.0" text="Normal Customers:">
+                                                <Label prefHeight="36.0" prefWidth="141.0" text="Customers:">
                                                    <HBox.margin>
                                                       <Insets left="20.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label fx:id="dataCustomers" prefHeight="36.0" prefWidth="116.0" text="DATA" />
+                                                <Label fx:id="dataCustomers" prefHeight="36.0" prefWidth="116.0" text="" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -81,6 +84,7 @@
                   </VBox>
                </children>
             </AnchorPane>
+
             <ScrollPane fx:id="ScrollPane" prefHeight="-1.0" prefWidth="-1.0">
                <content>
                   <StackPane fx:id="stackPane" prefHeight="545.0" prefWidth="641.0">
@@ -121,7 +125,7 @@
                                                 <Insets bottom="10.0" />
                                              </VBox.margin>
                                           </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Caterign" textAlignment="CENTER" wrappingWidth="129.27880859375">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catering" textAlignment="CENTER" wrappingWidth="129.27880859375">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -136,7 +140,7 @@
                                              </font>
                                           </Text>
                                           <Separator prefWidth="200.0" />
-                                          <Text fx:id="Q1" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                          <Text fx:id="Q1" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="128.94189453125">
                                              <VBox.margin>
                                                 <Insets bottom="10.0" top="20.0" />
                                              </VBox.margin>
@@ -144,7 +148,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="Q2" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                          <Text fx:id="Q2" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="128.94189453125">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -152,7 +156,7 @@
                                                 <Insets bottom="10.0" />
                                              </VBox.margin>
                                           </Text>
-                                          <Text fx:id="Q3" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                          <Text fx:id="Q3" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="128.94189453125">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -160,7 +164,7 @@
                                                 <Insets bottom="10.0" />
                                              </VBox.margin>
                                           </Text>
-                                          <Text fx:id="Q4" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                          <Text fx:id="Q4" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="128.94189453125">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -177,6 +181,7 @@
             </ScrollPane>
          </items>
       </SplitPane>
+
       <HBox id="HBox" fx:id="HBox" alignment="CENTER_LEFT" spacing="5.0">
          <children>
             <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
