@@ -52,14 +52,16 @@ public class Customer {
 
     public void setArrivetime(double arrivetime) {
         this.arrivetime = arrivetime;
+
     }
+
 
     public double raport() {
         Trace.out(Trace.Level.INFO, "Customer " + id + " arrived:" + arrivetime);
         Trace.out(Trace.Level.INFO, "Customer " + id + " finished:" + finistime);
         Trace.out(Trace.Level.INFO, "Customer " + id + " delay:" + (finistime - arrivetime));
-        sum += (finistime - arrivetime);
-        double average = sum / id / 2;
+        sum += (long) (finistime - arrivetime);
+        double average = (double) sum / id;
         System.out.println("Average " + average);
         return average;
     }

@@ -85,8 +85,11 @@ public class ResultDb {
         return avgtime;
     }
 
+
     public void setAvgtime(double avgtime) {
-        this.avgtime = avgtime;
+        double scales = Math.pow(10, 2);
+        double formattedAvg = Math.round(avgtime * scales) / scales;
+        this.avgtime = formattedAvg;
     }
     public int getCustomers() {
         return customers;

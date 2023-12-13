@@ -375,25 +375,37 @@ public class MyEngine extends Engine {
 
             case CATERING1:
                 a = (Customer) servicePoints[14].TakeFromTheLine();
-                servicePoints[18].AddToTheLine(a);
-                System.out.println("Customer arrived to Catering");
+                if(a.isNormalCustomer()) {
+                    servicePoints[18].AddToTheLine(a);
+                    System.out.println("Customer arrived to Catering");
+                } else {
+                    servicePoints[19].AddToTheLine(a);
+                }
                 break;
 
             case CATERING2:
                 a = (Customer) servicePoints[15].TakeFromTheLine();
-                servicePoints[18].AddToTheLine(a);
+                if(a.isNormalCustomer()) {
+                    servicePoints[18].AddToTheLine(a);
                 System.out.println("Customer arrived to Catering");
+                } else {
+                    servicePoints[19].AddToTheLine(a);
+                }
                 break;
 
             case CATERING3:
                 a = (Customer) servicePoints[16].TakeFromTheLine();
-                servicePoints[18].AddToTheLine(a);
+                if(a.isNormalCustomer()) {
+                    servicePoints[18].AddToTheLine(a);
                 System.out.println("Customer arrived to Catering");
+                } else {
+                    servicePoints[19].AddToTheLine(a);
+                }
                 break;
 
             case CATERING4:
                 a = (Customer) servicePoints[17].TakeFromTheLine();
-                servicePoints[19].AddToTheLine(a);
+                    servicePoints[19].AddToTheLine(a);
                 System.out.println("Customer arrived to Catering");
                 break;
 
@@ -403,6 +415,7 @@ public class MyEngine extends Engine {
                 e = new CustomerDb(a, this.ResultDb.getId());
                 CustomerDao.persist(e);
                 ResultDb.setAvgtime(a.raport());
+                System.out.println(ResultDb.getAvgtime());
                 ResultDb.setCustomers(Customer.getCount());
                 ResultDb.setTotalTime(Clock.getInstance().getClock());
                 ResultDao.update(ResultDb);

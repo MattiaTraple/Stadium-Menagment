@@ -2,6 +2,8 @@ package view;
 
 import controller.IControllerForM;
 import controller.IControllerForV;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,6 +14,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import simu.framework.IEngine;
 import simu.framework.Clock;
 import simu.framework.Trace;
@@ -97,12 +100,65 @@ public class Controller implements IControllerForM, IControllerForV {
     @FXML
     Canvas canvasy;
 
+    @FXML
+    private ImageView customerImageView1;
+
+    @FXML
+    private ImageView customerImageView2;
+
+    @FXML
+    private ImageView customerImageView3;
+
+    @FXML
+    private ImageView customerImageView4;
+
+    @FXML
+    private ImageView customerImageView5;
+
+
 
     int ticketTimes = 4;
     int securityTimes = 5;
     int checkinTimes = 5;
     int cateringTimes = 4;
 
+    private void displayAndHideImage(ImageView imageView) {
+        // Set up a timeline to hide the image after 10 seconds
+        Timeline timelineHide = new Timeline(
+                new KeyFrame(Duration.seconds(10), event -> {
+                    // Hide the image after 10 seconds
+                    imageView.setVisible(false);
+
+                    // Set up another timeline to show the image after 5 seconds
+                    Timeline timelineShow = new Timeline(
+                            new KeyFrame(Duration.seconds(5), eventShow -> {
+                                // Show the image after 5 seconds
+                                imageView.setVisible(true);
+                            })
+                    );
+                    timelineShow.play();
+                })
+        );
+        timelineHide.play();
+    }
+
+
+    private ImageView getCustomerImageView(int index) {
+        switch (index) {
+            case 1:
+                return customerImageView1;
+            case 2:
+                return customerImageView2;
+            case 3:
+                return customerImageView3;
+            case 4:
+                return customerImageView4;
+            case 5:
+                return customerImageView5;
+            default:
+                return null;
+        }
+    }
 
     @FXML
     public synchronized void buttonMinusSecurity() {
@@ -130,6 +186,7 @@ public class Controller implements IControllerForM, IControllerForV {
             }
             if (securityTimes > 0) {
                 securityTimes--;
+                displayAndHideImage(customerImageView1);
             }
         });
     }
@@ -139,6 +196,7 @@ public class Controller implements IControllerForM, IControllerForV {
         buttonPlusSecurity.setOnAction(e -> {
             if (securityTimes == 5) {
                 security5.setVisible(true);
+                displayAndHideImage(customerImageView1);
                 System.out.println("Security  plus button pressed " + securityTimes);
                 securityTimes = 5;
             } else if (securityTimes == 4) {
@@ -160,6 +218,8 @@ public class Controller implements IControllerForM, IControllerForV {
             }
             if (securityTimes < 5) {
                 securityTimes++;
+                displayAndHideImage(customerImageView2);
+
             }
         });
     }
@@ -185,6 +245,8 @@ public class Controller implements IControllerForM, IControllerForV {
             }
             if (cateringTimes > 0) {
                 cateringTimes--;
+                displayAndHideImage(customerImageView3);
+
             }
         });
     }
@@ -210,6 +272,8 @@ public class Controller implements IControllerForM, IControllerForV {
             }
             if (cateringTimes < 5) {
                 cateringTimes++;
+                displayAndHideImage(customerImageView4);
+
             }
         });
     }
@@ -242,6 +306,8 @@ public class Controller implements IControllerForM, IControllerForV {
             }
             if (checkinTimes > 0) {
                 checkinTimes--;
+                displayAndHideImage(customerImageView5);
+
             }
         });
     }
@@ -376,6 +442,8 @@ public class Controller implements IControllerForM, IControllerForV {
             public synchronized void run() {
                 while (true) {
                     System.out.println("New Customer");
+                    displayAndHideImage(customerImageView1);
+                    displayAndHideImage(customerImageView2);
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -387,6 +455,22 @@ public class Controller implements IControllerForM, IControllerForV {
         thread.start();
     }
 
+    private ImageView getSecurityImageView(int index) {
+        switch (index) {
+            case 1:
+                return security1;
+            case 2:
+                return security2;
+            case 3:
+                return security3;
+            case 4:
+                return security4;
+            case 5:
+                return security5;
+            default:
+                return null;
+        }
+    }
 
     @FXML
     private void results(ActionEvent event){
