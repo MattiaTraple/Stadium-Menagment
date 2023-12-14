@@ -40,30 +40,30 @@ public class MyEngine extends Engine {
 
         servicePoints = new ServicePoint[20];
 
-        servicePoints[0] = new Security(new Normal(10, 6), eventList, EventType.SECURITY1, 321, 392);
-        servicePoints[1] = new Security(new Normal(10, 6), eventList, EventType.SECURITY2, 265, 423);
-        servicePoints[2] = new Security(new Normal(10, 6), eventList, EventType.SECURITY3, 328, 430);
-        servicePoints[3] = new Security(new Normal(10, 6), eventList, EventType.SECURITY4, 270, 457);
-        servicePoints[4] = new Security(new Normal(10, 6), eventList, EventType.SECURITY5, 305, 457); // Adjusted value
+        servicePoints[0] = new Security(new Normal(10, 6), eventList, EventType.SECURITY1, 50, 526);
+        servicePoints[1] = new Security(new Normal(10, 6), eventList, EventType.SECURITY2, 240, 527);
+        servicePoints[2] = new Security(new Normal(10, 6), eventList, EventType.SECURITY3, 350, 528);
+        servicePoints[3] = new Security(new Normal(10, 6), eventList, EventType.SECURITY4, 440, 529);
+        servicePoints[4] = new Security(new Normal(10, 6), eventList, EventType.SECURITY5, 550, 530);
 
-        servicePoints[5] = new Ticket(new Normal(10, 6), eventList, EventType.TICKET_SELL1, 263, 360);
-        servicePoints[6] = new Ticket(new Normal(10, 6), eventList, EventType.TICKET_SELL2, 234, 373);
-        servicePoints[7] = new Ticket(new Normal(10, 6), eventList, EventType.TICKET_SELL3, 201, 389);
-        servicePoints[8] = new Ticket(new Normal(10, 6), eventList, EventType.TICKET_SELL4, 166, 404);
+        servicePoints[5] = new Ticket(new Normal(10, 6), eventList, EventType.TICKET_SELL1, 520, 380);
+        servicePoints[6] = new Ticket(new Normal(10, 6), eventList, EventType.TICKET_SELL2, 420, 380);
+        servicePoints[7] = new Ticket(new Normal(10, 6), eventList, EventType.TICKET_SELL3, 320, 380);
+        servicePoints[8] = new Ticket(new Normal(10, 6), eventList, EventType.TICKET_SELL4, 220, 380);
 
-        servicePoints[9] = new CheckIn(new Normal(10, 6), eventList, EventType.CHECK_IN1, 308, 524);
-        servicePoints[10] = new CheckIn(new Normal(10, 6), eventList, EventType.CHECK_IN2, 324, 517);
-        servicePoints[11] = new CheckIn(new Normal(10, 6), eventList, EventType.CHECK_IN3, 342, 505);
-        servicePoints[12] = new CheckIn(new Normal(10, 6), eventList, EventType.CHECK_IN4, 387, 481);
-        servicePoints[13] = new CheckIn(new Normal(10, 6), eventList, EventType.CHECK_IN5, 387, 501);
+        servicePoints[9] = new CheckIn(new Normal(10, 6), eventList, EventType.CHECK_IN1, 30, 230);
+        servicePoints[10] = new CheckIn(new Normal(10, 6), eventList, EventType.CHECK_IN2, 230, 230);
+        servicePoints[11] = new CheckIn(new Normal(10, 6), eventList, EventType.CHECK_IN3, 330, 230);
+        servicePoints[12] = new CheckIn(new Normal(10, 6), eventList, EventType.CHECK_IN4, 430, 230);
+        servicePoints[13] = new CheckIn(new Normal(10, 6), eventList, EventType.CHECK_IN5, 530, 230);
 
-        servicePoints[14] = new Catering(new Normal(10, 6), eventList, EventType.CATERING1, 322, 250);
-        servicePoints[15] = new Catering(new Normal(10, 6), eventList, EventType.CATERING2, 201, 389);
-        servicePoints[16] = new Catering(new Normal(10, 6), eventList, EventType.CATERING3, 166, 404);
-        servicePoints[17] = new Catering(new Normal(10, 6), eventList, EventType.CATERING4, 134, 422);
+        servicePoints[14] = new Catering(new Normal(10, 6), eventList, EventType.CATERING1, 300, 100);
+        servicePoints[15] = new Catering(new Normal(10, 6), eventList, EventType.CATERING2, 380, 100);
+        servicePoints[16] = new Catering(new Normal(10, 6), eventList, EventType.CATERING3, 460, 100);
+        servicePoints[17] = new Catering(new Normal(10, 6), eventList, EventType.CATERING4, 540, 422);
 
-        servicePoints[18] = new NormalCustomer(new Normal(10, 6), eventList, EventType.CUSTOMER_ARRIVAL, 257, 157);
-        servicePoints[19] = new VipCustomer(new Normal(10, 6), eventList, EventType.VIP_CUSTOMER_ARRIVAL, 51, 359);
+        servicePoints[18] = new NormalCustomer(new Normal(10, 6), eventList, EventType.CUSTOMER_ARRIVAL, 410, 25);
+        servicePoints[19] = new VipCustomer(new Normal(10, 6), eventList, EventType.VIP_CUSTOMER_ARRIVAL, 40, 40);
 
 
         arrivalProcess = new ArrivalProcess(new Negexp(15, 5), eventList, EventType.ARR1);
@@ -122,24 +122,25 @@ public class MyEngine extends Engine {
                 break;
             case SECURITY1:
                 a = (Customer) servicePoints[0].TakeFromTheLine(); //Customer moves from security to tickets
-                linecheck = true;
-                j = 0;
-                while (linecheck) {
+                    linecheck = true;
+                    j = 0;
+                    while (linecheck) {
 
-                    for (int i = 5; i < (5 + settings[1]); i++) {
-                        if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer Added to Security number " + i);
-                            linecheck = false;
-                            break;
+                        for (int i = 5; i < (5 + settings[1]); i++) {
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
+                                System.out.println("Customer Added to Security number " + i);
+                                linecheck = false;
+                                break;
+                            }
                         }
+                        j++;
                     }
-                    j++;
-                }
-                break;
+
+                    break;
             case SECURITY2:
                 a = (Customer) servicePoints[1].TakeFromTheLine(); //Customer moves from security to tickets
-                linecheck = true;
+                    linecheck = true;
                 j = 0;
                 while (linecheck) {
 

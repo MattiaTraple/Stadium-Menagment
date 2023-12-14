@@ -1,12 +1,17 @@
 package simu.model;
 
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import simu.framework.Clock;
 import simu.framework.Trace;
 import view.Controller;
+import view.NewCustomer;
 
 public class Customer {
     private ServicePoint p;
     private Controller controller = new Controller();
+    private NewCustomer gc;
     private double arrivetime;
     private double finistime;
     private int id;
@@ -55,14 +60,44 @@ public class Customer {
 
     }
 
-
     public double raport() {
         Trace.out(Trace.Level.INFO, "Customer " + id + " arrived:" + arrivetime);
         Trace.out(Trace.Level.INFO, "Customer " + id + " finished:" + finistime);
         Trace.out(Trace.Level.INFO, "Customer " + id + " delay:" + (finistime - arrivetime));
-        sum += (long) (finistime - arrivetime);
-        double average = (double) sum / id;
+        sum += (finistime - arrivetime);
+        double average = (double) sum / i;
         System.out.println("Average " + average);
         return average;
     }
+
+
+    public void draw(GraphicsContext gc, int x, int y) {
+        if (normalcustomer) {
+            gc.setStroke(Color.GREEN);
+            gc.strokeLine(x + 5, y, x + 5, y + 20);  // Body
+
+            gc.setFill(Color.GREEN);
+            gc.fillOval(x + 2, y - 5, 6, 6);
+
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(2);
+            gc.strokeLine(x + 5, y + 5, x - 3, y + 10);  // Left arm
+            gc.strokeLine(x + 5, y + 5, x + 13, y + 10);  // Right arm
+
+            gc.setStroke(Color.GREEN);
+            gc.setLineWidth(2);
+            gc.strokeLine(x + 5, y + 20, x + 3, y + 30);  // Left leg
+            gc.strokeLine(x + 5, y + 20, x + 7, y + 30);  // Right leg
+        } else {
+            gc.setFill(Color.RED);
+        }
+        gc.fillOval(x, y, 10, 10);
+    }
+
+    public void removeDraw(GraphicsContext gc, int x, int y) {
+        gc.setFill(Color.TRANSPARENT);
+        gc.fillOval(x, y, 1, 1);
+        gc.setFill(Color.TRANSPARENT);
+    }
+
 }

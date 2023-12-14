@@ -10,7 +10,15 @@ public class Controller implements IControllerForM, IControllerForV {
 
     public Controller(IController ui) {
         this.ui = ui;
+    }
 
+    @Override
+    public void makenewcustomer() {
+        Platform.runLater(new Runnable(){
+            public void run(){
+                ui.getNewCustomer().CustomerNew();
+            }
+        });
     }
 
     @Override
