@@ -27,7 +27,7 @@ public class NewCustomer implements INewCustomer {
     }
 
     public void CustomerNew() {
-        int index = 1; // Initialize the index counter
+        int index = 1;
         int x = 0;
         int y = 0;
 

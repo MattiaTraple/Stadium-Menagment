@@ -381,7 +381,7 @@ public class Controller implements IControllerForM, IControllerForV {
             @Override
             public synchronized void run() {
                 while (true) {
-                    System.out.println("New Customer");
+                    System.out.println(" ");
                     newCustomer.CustomerNew();
                     try {
                         Thread.sleep(1000);

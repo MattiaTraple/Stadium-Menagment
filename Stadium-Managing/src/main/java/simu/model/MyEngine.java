@@ -31,8 +31,7 @@ public class MyEngine extends Engine {
 
     private ServicePoint[] servicePoints;
 
-    private int[] settings = {0, 0, 0, 0}; // this will define how many servers
-
+    private int[] settings = {0, 0, 0, 0};
 
     public MyEngine(IControllerForM controller) {
 
@@ -85,7 +84,7 @@ public class MyEngine extends Engine {
 
     @Override
     protected void covers() {
-        arrivalProcess.generateNextEvent(); // First arrival to Simulation
+        arrivalProcess.generateNextEvent();
         ResultDao = new ResultDao();
         Date date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -98,13 +97,13 @@ public class MyEngine extends Engine {
 
     @Override
     protected void executeEvents(Event t) {
-        System.out.println("Processing event: " + t.getType()); // Add this line for debugging
+        System.out.println("Processing event: " + t.getType());
         Customer a;
         CustomerDb e;
         boolean linecheck;
         int j;
         switch ((EventType) t.getType()) {
-            case ARR1:
+            case ARR1 -> {
                 linecheck = true;
                 j = 0;
                 while (linecheck) {
@@ -119,44 +118,9 @@ public class MyEngine extends Engine {
                     j++;
                 }
                 arrivalProcess.generateNextEvent();
-                break;
-            case SECURITY1:
-                a = (Customer) servicePoints[0].TakeFromTheLine(); //Customer moves from security to tickets
-                    linecheck = true;
-                    j = 0;
-                    while (linecheck) {
-
-                        for (int i = 5; i < (5 + settings[1]); i++) {
-                            if (servicePoints[i].GetLineSize() == j) {
-                                servicePoints[i].AddToTheLine(a);
-                                System.out.println("Customer Added to Security number " + i);
-                                linecheck = false;
-                                break;
-                            }
-                        }
-                        j++;
-                    }
-
-                    break;
-            case SECURITY2:
-                a = (Customer) servicePoints[1].TakeFromTheLine(); //Customer moves from security to tickets
-                    linecheck = true;
-                j = 0;
-                while (linecheck) {
-
-                    for (int i = 5; i < (5 + settings[1]); i++) {
-                        if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer Added to Security number " + i);
-                            linecheck = false;
-                            break;
-                        }
-                    }
-                    j++;
-                }
-                break;
-            case SECURITY3:
-                a = (Customer) servicePoints[2].TakeFromTheLine(); //Customer moves from security to tickets
+            }
+            case SECURITY1 -> {
+                a = (Customer) servicePoints[0].TakeFromTheLine();
                 linecheck = true;
                 j = 0;
                 while (linecheck) {
@@ -171,9 +135,9 @@ public class MyEngine extends Engine {
                     }
                     j++;
                 }
-                break;
-            case SECURITY4:
-                a = (Customer) servicePoints[3].TakeFromTheLine(); //Customer moves from security to tickets
+            }
+            case SECURITY2 -> {
+                a = (Customer) servicePoints[1].TakeFromTheLine();
                 linecheck = true;
                 j = 0;
                 while (linecheck) {
@@ -188,9 +152,9 @@ public class MyEngine extends Engine {
                     }
                     j++;
                 }
-                break;
-            case SECURITY5:
-                a = (Customer) servicePoints[4].TakeFromTheLine(); //Customer moves from security to tickets
+            }
+            case SECURITY3 -> {
+                a = (Customer) servicePoints[2].TakeFromTheLine();
                 linecheck = true;
                 j = 0;
                 while (linecheck) {
@@ -205,10 +169,44 @@ public class MyEngine extends Engine {
                     }
                     j++;
                 }
-                break;
-            case TICKET_SELL1:
-                a = (Customer) servicePoints[5].TakeFromTheLine(); //Customer moves from Tickets to checkin
-                if(a.isNormalCustomer()) {
+            }
+            case SECURITY4 -> {
+                a = (Customer) servicePoints[3].TakeFromTheLine();
+                linecheck = true;
+                j = 0;
+                while (linecheck) {
+
+                    for (int i = 5; i < (5 + settings[1]); i++) {
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
+                            System.out.println("Customer Added to Security number " + i);
+                            linecheck = false;
+                            break;
+                        }
+                    }
+                    j++;
+                }
+            }
+            case SECURITY5 -> {
+                a = (Customer) servicePoints[4].TakeFromTheLine();
+                linecheck = true;
+                j = 0;
+                while (linecheck) {
+
+                    for (int i = 5; i < (5 + settings[1]); i++) {
+                        if (servicePoints[i].GetLineSize() == j) {
+                            servicePoints[i].AddToTheLine(a);
+                            System.out.println("Customer Added to Security number " + i);
+                            linecheck = false;
+                            break;
+                        }
+                    }
+                    j++;
+                }
+            }
+            case TICKET_SELL1 -> {
+                a = (Customer) servicePoints[5].TakeFromTheLine();
+                if (a.isNormalCustomer()) {
                     linecheck = true;
                     j = 0;
                     while (linecheck) {
@@ -222,74 +220,78 @@ public class MyEngine extends Engine {
                             }
                         }
                         j++;
-                    }} else {
+                    }
+                } else {
                     servicePoints[10].AddToTheLine(a);
                 }
-                break;
-            case TICKET_SELL2:
-                a = (Customer) servicePoints[6].TakeFromTheLine(); //Customer moves from Tickets to checkin
-                if(a.isNormalCustomer()) {
+            }
+            case TICKET_SELL2 -> {
+                a = (Customer) servicePoints[6].TakeFromTheLine();
+                if (a.isNormalCustomer()) {
                     linecheck = true;
-                j = 0;
-                while (linecheck) {
+                    j = 0;
+                    while (linecheck) {
 
-                    for (int i = 10; i < (10 + settings[2]); i++) {
-                        if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer added to Ticket Sells number " + i);
-                            linecheck = false;
-                            break;
+                        for (int i = 10; i < (10 + settings[2]); i++) {
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
+                                System.out.println("Customer added to Ticket Sells number " + i);
+                                linecheck = false;
+                                break;
+                            }
                         }
+                        j++;
                     }
-                    j++;
-                }} else {
+                } else {
                     servicePoints[11].AddToTheLine(a);
                 }
-                break;
-            case TICKET_SELL3:
-                a = (Customer) servicePoints[7].TakeFromTheLine(); //Customer moves from Tickets to checkin
-                if(a.isNormalCustomer()) {
+            }
+            case TICKET_SELL3 -> {
+                a = (Customer) servicePoints[7].TakeFromTheLine();
+                if (a.isNormalCustomer()) {
 
                     linecheck = true;
-                j = 0;
-                while (linecheck) {
+                    j = 0;
+                    while (linecheck) {
 
-                    for (int i = 10; i < (10 + settings[2]); i++) {
-                        if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer added to Ticket Sells number " + i);
-                            linecheck = false;
-                            break;
+                        for (int i = 10; i < (10 + settings[2]); i++) {
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
+                                System.out.println("Customer added to Ticket Sells number " + i);
+                                linecheck = false;
+                                break;
+                            }
                         }
+                        j++;
                     }
-                    j++;
-                }} else {
+                } else {
                     servicePoints[12].AddToTheLine(a);
                 }
-                break;
-            case TICKET_SELL4:
-                a = (Customer) servicePoints[8].TakeFromTheLine(); //Customer moves from Tickets to checkin
-                if(a.isNormalCustomer()) {
+            }
+            case TICKET_SELL4 -> {
+                a = (Customer) servicePoints[8].TakeFromTheLine();
+                if (a.isNormalCustomer()) {
 
                     linecheck = true;
-                j = 0;
-                while (linecheck) {
+                    j = 0;
+                    while (linecheck) {
 
-                    for (int i = 10; i < (10 + settings[2]); i++) {
-                        if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
-                            System.out.println("Customer added to Ticket Sells number " + i);
-                            linecheck = false;
-                            break;
+                        for (int i = 10; i < (10 + settings[2]); i++) {
+                            if (servicePoints[i].GetLineSize() == j) {
+                                servicePoints[i].AddToTheLine(a);
+                                System.out.println("Customer added to Ticket Sells number " + i);
+                                linecheck = false;
+                                break;
+                            }
                         }
+                        j++;
                     }
-                    j++;
-                }} else {
-                    servicePoints[13].AddToTheLine(a);
+                } else {
+                    servicePoints[9].AddToTheLine(a);
                 }
-                break;
-            case CHECK_IN1:
-                a = (Customer) servicePoints[9].TakeFromTheLine(); //Customer moves from checkin to catering
+            }
+            case CHECK_IN1 -> {
+                a = (Customer) servicePoints[9].TakeFromTheLine();
                 linecheck = true;
                 j = 0;
                 while (linecheck) {
@@ -304,9 +306,9 @@ public class MyEngine extends Engine {
                     }
                     j++;
                 }
-                break;
-            case CHECK_IN2:
-                a = (Customer) servicePoints[10].TakeFromTheLine(); //Customer moves from checkin to catering
+            }
+            case CHECK_IN2 -> {
+                a = (Customer) servicePoints[10].TakeFromTheLine();
                 linecheck = true;
                 j = 0;
                 while (linecheck) {
@@ -321,9 +323,9 @@ public class MyEngine extends Engine {
                     }
                     j++;
                 }
-                break;
-            case CHECK_IN3:
-                a = (Customer) servicePoints[11].TakeFromTheLine(); //Customer moves from checkin to catering
+            }
+            case CHECK_IN3 -> {
+                a = (Customer) servicePoints[11].TakeFromTheLine();
                 linecheck = true;
                 j = 0;
                 while (linecheck) {
@@ -338,9 +340,9 @@ public class MyEngine extends Engine {
                     }
                     j++;
                 }
-                break;
-            case CHECK_IN4:
-                a = (Customer) servicePoints[12].TakeFromTheLine(); //Customer moves from checkin to catering
+            }
+            case CHECK_IN4 -> {
+                a = (Customer) servicePoints[12].TakeFromTheLine();
                 linecheck = true;
                 j = 0;
                 while (linecheck) {
@@ -355,10 +357,9 @@ public class MyEngine extends Engine {
                     }
                     j++;
                 }
-                break;
-
-            case CHECK_IN5:
-                a = (Customer) servicePoints[13].TakeFromTheLine(); // Customer moves from checkin to catering
+            }
+            case CHECK_IN5 -> {
+                a = (Customer) servicePoints[13].TakeFromTheLine();
                 linecheck = true;
                 j = 0;
                 while (linecheck) {
@@ -372,45 +373,40 @@ public class MyEngine extends Engine {
                     }
                     j++;
                 }
-                break;
-
-            case CATERING1:
+            }
+            case CATERING1 -> {
                 a = (Customer) servicePoints[14].TakeFromTheLine();
-                if(a.isNormalCustomer()) {
+                if (a.isNormalCustomer()) {
                     servicePoints[18].AddToTheLine(a);
                     System.out.println("Customer arrived to Catering");
                 } else {
                     servicePoints[19].AddToTheLine(a);
                 }
-                break;
-
-            case CATERING2:
+            }
+            case CATERING2 -> {
                 a = (Customer) servicePoints[15].TakeFromTheLine();
-                if(a.isNormalCustomer()) {
+                if (a.isNormalCustomer()) {
                     servicePoints[18].AddToTheLine(a);
-                System.out.println("Customer arrived to Catering");
+                    System.out.println("Customer arrived to Catering");
                 } else {
                     servicePoints[19].AddToTheLine(a);
                 }
-                break;
-
-            case CATERING3:
+            }
+            case CATERING3 -> {
                 a = (Customer) servicePoints[16].TakeFromTheLine();
-                if(a.isNormalCustomer()) {
+                if (a.isNormalCustomer()) {
                     servicePoints[18].AddToTheLine(a);
-                System.out.println("Customer arrived to Catering");
+                    System.out.println("Customer arrived to Catering");
                 } else {
                     servicePoints[19].AddToTheLine(a);
                 }
-                break;
-
-            case CATERING4:
+            }
+            case CATERING4 -> {
                 a = (Customer) servicePoints[17].TakeFromTheLine();
-                    servicePoints[19].AddToTheLine(a);
+                servicePoints[19].AddToTheLine(a);
                 System.out.println("Customer arrived to Catering");
-                break;
-
-            case CUSTOMER_ARRIVAL:
+            }
+            case CUSTOMER_ARRIVAL -> {
                 a = (Customer) servicePoints[18].TakeFromTheLine();
                 a.setFinistime(Clock.getInstance().getClock());
                 e = new CustomerDb(a, this.ResultDb.getId());
@@ -422,16 +418,15 @@ public class MyEngine extends Engine {
                 ResultDao.update(ResultDb);
                 a.raport();
                 System.out.println("Customer arrived and added to the database");
-                break;
-
-            case VIP_CUSTOMER_ARRIVAL:
+            }
+            case VIP_CUSTOMER_ARRIVAL -> {
                 a = (Customer) servicePoints[19].TakeFromTheLine();
                 a.setFinistime(Clock.getInstance().getClock());
                 e = new CustomerDb(a, this.ResultDb.getId());
                 CustomerDao.persist(e);
                 a.raport();
                 System.out.println("VIP Customer arrived and added to the database");
-                break;
+            }
         }
     }
 

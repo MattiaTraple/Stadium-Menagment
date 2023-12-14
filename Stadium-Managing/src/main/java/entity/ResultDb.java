@@ -23,9 +23,6 @@ public class ResultDb {
     @Column(name = "customers")
     private int customers;
 
-    @Column(name = "vip_customers")
-    private int vip_customers;
-
     @Column(name = "security")
     private int security;
 
@@ -43,7 +40,6 @@ public class ResultDb {
         this.date = date;
         this.totaltime = 0;
         this.avgtime = 0;
-        this.vip_customers = 0;
         this.customers = 0;
         this.checkin = settings[2];
         this.security = settings[0];
@@ -99,13 +95,7 @@ public class ResultDb {
         this.customers = customers;
     }
 
-    public int getVip_customers() {
-        return vip_customers;
-    }
 
-    public void setVip_customers(int vip_customers) {
-        this.vip_customers = vip_customers;
-    }
 
     public int getCheckin() {
         return checkin;

@@ -74,20 +74,20 @@ public class Customer {
     public void draw(GraphicsContext gc, int x, int y) {
         if (normalcustomer) {
             gc.setStroke(Color.GREEN);
-            gc.strokeLine(x + 5, y, x + 5, y + 20);  // Body
+            gc.strokeLine(x + 5, y, x + 5, y + 20);
 
             gc.setFill(Color.GREEN);
             gc.fillOval(x + 2, y - 5, 6, 6);
 
             gc.setStroke(Color.GREEN);
             gc.setLineWidth(2);
-            gc.strokeLine(x + 5, y + 5, x - 3, y + 10);  // Left arm
-            gc.strokeLine(x + 5, y + 5, x + 13, y + 10);  // Right arm
+            gc.strokeLine(x + 5, y + 5, x - 3, y + 10);
+            gc.strokeLine(x + 5, y + 5, x + 13, y + 10);
 
             gc.setStroke(Color.GREEN);
             gc.setLineWidth(2);
-            gc.strokeLine(x + 5, y + 20, x + 3, y + 30);  // Left leg
-            gc.strokeLine(x + 5, y + 20, x + 7, y + 30);  // Right leg
+            gc.strokeLine(x + 5, y + 20, x + 3, y + 30);
+            gc.strokeLine(x + 5, y + 20, x + 7, y + 30);
         } else {
             gc.setFill(Color.RED);
         }

@@ -78,9 +78,9 @@ public abstract class Engine extends Thread implements IEngine{
         }
     }
 
-    protected abstract void covers(); // Määritellään simu.model-pakkauksessa Moottorin aliluokassa
+    protected abstract void covers();
 
-    protected abstract void executeEvents(Event t);  // Määritellään simu.model-pakkauksessa Moottorin aliluokassa
+    protected abstract void executeEvents(Event t);
 
-    protected abstract void results(); // Määritellään simu.model-pakkauksessa Moottorin aliluokassa
+    protected abstract void results();
 }

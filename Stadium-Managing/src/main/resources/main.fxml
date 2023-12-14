@@ -580,6 +580,7 @@
                                     <Image url="@/icons/scanner2.png" />
                                  </image>
                               </ImageView>
+
                               <Canvas fx:id="canvasy" height="545.0" width="633.0" />
                            </children>
                         </AnchorPane>
