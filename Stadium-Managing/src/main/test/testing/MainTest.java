@@ -28,18 +28,16 @@ public class MainTest {
 
         @Override
         public void setSettings(int[] ints) {
-            // Implement if needed...
         }
 
         @Override
         public int[] getSettings() {
-            // Implement if needed...
             return new int[0];
         }
 
         @Override
         public int getSimulationTime() {
-            return (int) simulationTime; // Assuming getSimulationTime returns an int
+            return (int) simulationTime;
         }
     }
 
