@@ -62,7 +62,7 @@ public class MyEngine extends Engine {
         servicePoints[17] = new Catering(new Normal(10, 6), eventList, EventType.CATERING4, 540, 422);
 
         servicePoints[18] = new NormalCustomer(new Normal(10, 6), eventList, EventType.CUSTOMER_ARRIVAL, 410, 25);
-        servicePoints[19] = new VipCustomer(new Normal(10, 6), eventList, EventType.VIP_CUSTOMER_ARRIVAL, 40, 40);
+        servicePoints[19] = new VipCustomer(new Normal(10, 6), eventList, EventType.VIP_CUSTOMER_ARRIVAL, 40, 20);
 
 
         arrivalProcess = new ArrivalProcess(new Negexp(15, 5), eventList, EventType.ARR1);
