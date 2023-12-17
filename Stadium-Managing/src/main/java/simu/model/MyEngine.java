@@ -143,6 +143,7 @@ public class MyEngine extends Engine {
                     j++;
                 }
             }
+
             case SECURITY2 -> {
                 a = (Customer) servicePoints[1].TakeFromTheLine();
                 linecheck = true;
