@@ -78,7 +78,6 @@ public class Customer {
 
     public void draw(GraphicsContext gc, int x, int y) {
         if (normalCustomer) {
-            // Draw normal customer
             gc.setStroke(Color.GREEN);
             gc.strokeLine(x + 5, y, x + 5, y + 20);
 
@@ -95,7 +94,6 @@ public class Customer {
             gc.strokeLine(x + 5, y + 20, x + 3, y + 30);
             gc.strokeLine(x + 5, y + 20, x + 7, y + 30);
         } else if (vipCustomer) {
-            // Draw VIP customer (golden stick person)
             gc.setStroke(Color.GOLD);
             gc.strokeLine(x + 5, y, x + 5, y + 20);
 
