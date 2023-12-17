@@ -112,6 +112,8 @@ public class Customer {
         }
     }
 
+
+
     public void removeDraw(GraphicsContext gc, int x, int y) {
         gc.setFill(Color.TRANSPARENT);
         gc.fillOval(x, y, 1, 1);
