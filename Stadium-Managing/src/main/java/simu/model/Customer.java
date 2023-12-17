@@ -111,6 +111,7 @@ public class Customer {
             gc.strokeLine(x + 5, y + 20, x + 7, y + 30);
         }
     }
+
     public void removeDraw(GraphicsContext gc, int x, int y) {
         gc.setFill(Color.TRANSPARENT);
         gc.fillOval(x, y, 1, 1);
