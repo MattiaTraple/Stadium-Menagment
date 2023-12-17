@@ -69,7 +69,7 @@ public abstract class Engine extends Thread implements IEngine{
     }
 
 
-    private void delay() { // UUSI
+    private void delay() {
         Trace.out(Trace.Level.INFO, "Delay " + delay);
         try {
             sleep(delay);
