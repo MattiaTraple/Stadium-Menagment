@@ -39,11 +39,11 @@ public class MyEngine extends Engine {
 
         servicePoints = new ServicePoint[20];
 
-        servicePoints[0] = new Security(new Normal(10, 6), eventList, EventType.SECURITY1, 50, 526);
-        servicePoints[1] = new Security(new Normal(10, 6), eventList, EventType.SECURITY2, 240, 527);
-        servicePoints[2] = new Security(new Normal(10, 6), eventList, EventType.SECURITY3, 350, 528);
-        servicePoints[3] = new Security(new Normal(10, 6), eventList, EventType.SECURITY4, 440, 529);
-        servicePoints[4] = new Security(new Normal(10, 6), eventList, EventType.SECURITY5, 550, 530);
+        servicePoints[0] = new Security(new Normal(10, 6), eventList, EventType.SECURITY1, 50, 500);
+        servicePoints[1] = new Security(new Normal(10, 6), eventList, EventType.SECURITY2, 240, 501);
+        servicePoints[2] = new Security(new Normal(10, 6), eventList, EventType.SECURITY3, 350, 502);
+        servicePoints[3] = new Security(new Normal(10, 6), eventList, EventType.SECURITY4, 440, 503);
+        servicePoints[4] = new Security(new Normal(10, 6), eventList, EventType.SECURITY5, 550, 504);
 
         servicePoints[5] = new Ticket(new Normal(10, 6), eventList, EventType.TICKET_SELL1, 520, 380);
         servicePoints[6] = new Ticket(new Normal(10, 6), eventList, EventType.TICKET_SELL2, 420, 380);
@@ -109,8 +109,15 @@ public class MyEngine extends Engine {
                 while (linecheck) {
                     for (int i = 0; i < settings[0]; i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(new Customer());
-                            System.out.println("Customer Added to line " + i);
+                            servicePoints[0].AddToTheLine(new Customer(true));
+                            System.out.println("VIP Customer Added to Security number 0");
+                            servicePoints[9].AddToTheLine(new Customer(true));
+                            System.out.println("VIP Customer Added to Check In number 9");
+                            servicePoints[19].AddToTheLine(new Customer(true));
+                            servicePoints[1].AddToTheLine(new Customer(false));
+                            servicePoints[2].AddToTheLine(new Customer(false));
+                            servicePoints[3].AddToTheLine(new Customer(false));
+                            servicePoints[4].AddToTheLine(new Customer(false));
                             linecheck = false;
                             break;
                         }
@@ -127,7 +134,7 @@ public class MyEngine extends Engine {
 
                     for (int i = 5; i < (5 + settings[1]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
+                            servicePoints[i].AddToTheLine(new Customer(false));
                             System.out.println("Customer Added to Security number " + i);
                             linecheck = false;
                             break;
@@ -144,7 +151,7 @@ public class MyEngine extends Engine {
 
                     for (int i = 5; i < (5 + settings[1]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
+                            servicePoints[i].AddToTheLine(new Customer(false));
                             System.out.println("Customer Added to Security number " + i);
                             linecheck = false;
                             break;
@@ -161,7 +168,7 @@ public class MyEngine extends Engine {
 
                     for (int i = 5; i < (5 + settings[1]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
+                            servicePoints[i].AddToTheLine(new Customer(false));
                             System.out.println("Customer Added to Security number " + i);
                             linecheck = false;
                             break;
@@ -178,7 +185,7 @@ public class MyEngine extends Engine {
 
                     for (int i = 5; i < (5 + settings[1]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
+                            servicePoints[i].AddToTheLine(new Customer(false));
                             System.out.println("Customer Added to Security number " + i);
                             linecheck = false;
                             break;
@@ -195,7 +202,7 @@ public class MyEngine extends Engine {
 
                     for (int i = 5; i < (5 + settings[1]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
+                            servicePoints[i].AddToTheLine(new Customer(false));
                             System.out.println("Customer Added to Security number " + i);
                             linecheck = false;
                             break;
@@ -206,14 +213,13 @@ public class MyEngine extends Engine {
             }
             case TICKET_SELL1 -> {
                 a = (Customer) servicePoints[5].TakeFromTheLine();
-                if (a.isNormalCustomer()) {
                     linecheck = true;
                     j = 0;
                     while (linecheck) {
 
                         for (int i = 10; i < (10 + settings[2]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
-                                servicePoints[i].AddToTheLine(a);
+                                servicePoints[i].AddToTheLine(new Customer(false));
                                 System.out.println("Customer added to Ticket Sells number " + i);
                                 linecheck = false;
                                 break;
@@ -221,20 +227,16 @@ public class MyEngine extends Engine {
                         }
                         j++;
                     }
-                } else {
-                    servicePoints[10].AddToTheLine(a);
-                }
             }
             case TICKET_SELL2 -> {
                 a = (Customer) servicePoints[6].TakeFromTheLine();
-                if (a.isNormalCustomer()) {
                     linecheck = true;
                     j = 0;
                     while (linecheck) {
 
                         for (int i = 10; i < (10 + settings[2]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
-                                servicePoints[i].AddToTheLine(a);
+                                servicePoints[i].AddToTheLine(new Customer(false));
                                 System.out.println("Customer added to Ticket Sells number " + i);
                                 linecheck = false;
                                 break;
@@ -242,13 +244,9 @@ public class MyEngine extends Engine {
                         }
                         j++;
                     }
-                } else {
-                    servicePoints[11].AddToTheLine(a);
-                }
             }
             case TICKET_SELL3 -> {
                 a = (Customer) servicePoints[7].TakeFromTheLine();
-                if (a.isNormalCustomer()) {
 
                     linecheck = true;
                     j = 0;
@@ -256,7 +254,7 @@ public class MyEngine extends Engine {
 
                         for (int i = 10; i < (10 + settings[2]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
-                                servicePoints[i].AddToTheLine(a);
+                                servicePoints[i].AddToTheLine(new Customer(false));
                                 System.out.println("Customer added to Ticket Sells number " + i);
                                 linecheck = false;
                                 break;
@@ -264,21 +262,16 @@ public class MyEngine extends Engine {
                         }
                         j++;
                     }
-                } else {
-                    servicePoints[12].AddToTheLine(a);
-                }
             }
             case TICKET_SELL4 -> {
                 a = (Customer) servicePoints[8].TakeFromTheLine();
-                if (a.isNormalCustomer()) {
-
                     linecheck = true;
                     j = 0;
                     while (linecheck) {
 
                         for (int i = 10; i < (10 + settings[2]); i++) {
                             if (servicePoints[i].GetLineSize() == j) {
-                                servicePoints[i].AddToTheLine(a);
+                                servicePoints[i].AddToTheLine(new Customer(false));
                                 System.out.println("Customer added to Ticket Sells number " + i);
                                 linecheck = false;
                                 break;
@@ -286,9 +279,6 @@ public class MyEngine extends Engine {
                         }
                         j++;
                     }
-                } else {
-                    servicePoints[9].AddToTheLine(a);
-                }
             }
             case CHECK_IN1 -> {
                 a = (Customer) servicePoints[9].TakeFromTheLine();
@@ -298,7 +288,7 @@ public class MyEngine extends Engine {
 
                     for (int i = 15; i < (15 + settings[3]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
+                            servicePoints[i].AddToTheLine(new Customer(false));
                             System.out.println("Customer Added to Check In number " + i);
                             linecheck = false;
                             break;
@@ -315,7 +305,7 @@ public class MyEngine extends Engine {
 
                     for (int i = 15; i < (15 + settings[3]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
+                            servicePoints[i].AddToTheLine(new Customer(false));
                             System.out.println("Customer Added to Check In number " + i);
                             linecheck = false;
                             break;
@@ -332,7 +322,7 @@ public class MyEngine extends Engine {
 
                     for (int i = 15; i < (15 + settings[3]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
+                            servicePoints[i].AddToTheLine(new Customer(false));
                             System.out.println("Customer Added to Check In number " + i);
                             linecheck = false;
                             break;
@@ -349,7 +339,7 @@ public class MyEngine extends Engine {
 
                     for (int i = 15; i < (15 + settings[3]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
+                            servicePoints[i].AddToTheLine(new Customer(false));
                             System.out.println("Customer Added to Check In number " + i);
                             linecheck = false;
                             break;
@@ -365,7 +355,7 @@ public class MyEngine extends Engine {
                 while (linecheck) {
                     for (int i = 15; i < (15 + settings[3]); i++) {
                         if (servicePoints[i].GetLineSize() == j) {
-                            servicePoints[i].AddToTheLine(a);
+                            servicePoints[i].AddToTheLine(new Customer(false));
                             System.out.println("Customer Added to Check In number " + i);
                             linecheck = false;
                             break;
@@ -376,34 +366,22 @@ public class MyEngine extends Engine {
             }
             case CATERING1 -> {
                 a = (Customer) servicePoints[14].TakeFromTheLine();
-                if (a.isNormalCustomer()) {
-                    servicePoints[18].AddToTheLine(a);
+                    servicePoints[18].AddToTheLine(new Customer(false));
                     System.out.println("Customer arrived to Catering");
-                } else {
-                    servicePoints[19].AddToTheLine(a);
                 }
-            }
             case CATERING2 -> {
                 a = (Customer) servicePoints[15].TakeFromTheLine();
-                if (a.isNormalCustomer()) {
-                    servicePoints[18].AddToTheLine(a);
-                    System.out.println("Customer arrived to Catering");
-                } else {
-                    servicePoints[19].AddToTheLine(a);
-                }
+                servicePoints[18].AddToTheLine(new Customer(false));
+                System.out.println("Customer arrived to Catering");
             }
             case CATERING3 -> {
                 a = (Customer) servicePoints[16].TakeFromTheLine();
-                if (a.isNormalCustomer()) {
-                    servicePoints[18].AddToTheLine(a);
-                    System.out.println("Customer arrived to Catering");
-                } else {
-                    servicePoints[19].AddToTheLine(a);
-                }
+                servicePoints[18].AddToTheLine(new Customer(false));
+                System.out.println("Customer arrived to Catering");
             }
             case CATERING4 -> {
                 a = (Customer) servicePoints[17].TakeFromTheLine();
-                servicePoints[19].AddToTheLine(a);
+                servicePoints[18].AddToTheLine(new Customer(false));
                 System.out.println("Customer arrived to Catering");
             }
             case CUSTOMER_ARRIVAL -> {

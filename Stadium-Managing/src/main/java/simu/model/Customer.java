@@ -1,7 +1,6 @@
 package simu.model;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import simu.framework.Clock;
 import simu.framework.Trace;
@@ -18,13 +17,15 @@ public class Customer {
     private static int i = 1;
     private static long sum = 0;
     private boolean ticket = true;
-    private boolean normalcustomer;
+    private boolean normalCustomer;
+    private boolean vipCustomer;
 
-    public Customer() {
+    public Customer(boolean isVIP) {
         id = i++;
         arrivetime = Clock.getInstance().getClock();
-        Trace.out(Trace.Level.INFO, "New Customer:" + id + ":" + arrivetime );
-        normalcustomer = true;
+        Trace.out(Trace.Level.INFO, "New Customer:" + id + ":" + arrivetime);
+        normalCustomer = !isVIP;
+        vipCustomer = isVIP;
     }
 
     public boolean isTicket() {
@@ -32,7 +33,11 @@ public class Customer {
     }
 
     public boolean isNormalCustomer() {
-        return normalcustomer;
+        return normalCustomer;
+    }
+
+    public boolean isVIPCustomer() {
+        return vipCustomer;
     }
 
     public static int getCount() {
@@ -72,7 +77,8 @@ public class Customer {
 
 
     public void draw(GraphicsContext gc, int x, int y) {
-        if (normalcustomer) {
+        if (normalCustomer) {
+            // Draw normal customer
             gc.setStroke(Color.GREEN);
             gc.strokeLine(x + 5, y, x + 5, y + 20);
 
@@ -88,12 +94,25 @@ public class Customer {
             gc.setLineWidth(2);
             gc.strokeLine(x + 5, y + 20, x + 3, y + 30);
             gc.strokeLine(x + 5, y + 20, x + 7, y + 30);
-        } else {
-            gc.setFill(Color.RED);
-        }
-        gc.fillOval(x, y, 10, 10);
-    }
+        } else if (vipCustomer) {
+            // Draw VIP customer (golden stick person)
+            gc.setStroke(Color.GOLD);
+            gc.strokeLine(x + 5, y, x + 5, y + 20);
 
+            gc.setFill(Color.GOLD);
+            gc.fillOval(x + 2, y - 5, 6, 6);
+
+            gc.setStroke(Color.GOLD);
+            gc.setLineWidth(2);
+            gc.strokeLine(x + 5, y + 5, x - 3, y + 10);
+            gc.strokeLine(x + 5, y + 5, x + 13, y + 10);
+
+            gc.setStroke(Color.GOLD);
+            gc.setLineWidth(2);
+            gc.strokeLine(x + 5, y + 20, x + 3, y + 30);
+            gc.strokeLine(x + 5, y + 20, x + 7, y + 30);
+        }
+    }
     public void removeDraw(GraphicsContext gc, int x, int y) {
         gc.setFill(Color.TRANSPARENT);
         gc.fillOval(x, y, 1, 1);
